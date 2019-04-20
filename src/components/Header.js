@@ -31,7 +31,11 @@ export default class Header extends Component {
 						<div className="user-block__name">Kim Evans</div>
 					</div>
 					<button onClick={this.props.shift} className="user-block__sign-out">
-						<img src="img/icons/fa-sign-out.png" alt="" />
+						<img
+							src="img/icons/fa-sign-out.png"
+							title="Sign Out"
+							alt="Sign Out."
+						/>
 					</button>
 				</div>
 			</header>
