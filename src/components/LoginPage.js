@@ -5,55 +5,59 @@ export default class LoginPage extends Component {
 		return (
 			<>
 				<div className="login-page">
-					<div className="section-bg">
-						<img
+					<div className="background">
+						{/* <img
 							className="logo-small"
 							src="/img/logo-small-min.png"
 							alt="Small logo."
-						/>
+						/> */}
 					</div>
-					<div className="section-login">
-						<div className="image u-mb-big">
+
+					<div className="sidebar">
+						<div className="sidebar__logo">
 							<img
-								className="logo-big"
+								className="logo-white"
 								src="/img/logo-big-min.png"
 								alt="Big logo."
 							/>
 						</div>
-						<div className="tabs u-mb-md">
-							<button className="btn btn-small">Sign In</button>
-							<button className="btn btn-small">Sign Up</button>
-						</div>
-						<div>
-							<form className="form" action="#">
-								<div className="form-group u-mb-md">
-									<input
-										className="form__input"
-										id="email"
-										type="email"
-										placeholder="Email"
-										required
-									/>
-									<input
-										className="form__input"
-										id="password"
-										type="password"
-										placeholder="Password"
-										required
-									/>
-								</div>
-								<div className="form-group">
-									<button onClick={this.props.shift} className="btn btn-big">
+
+						<div className="sidebar__form form">
+							<div className="form__tabs u-mb-md">
+								<button className="form__btn form__btn--small">Sign In</button>
+								<button className="form__btn form__btn--small">Sign Up</button>
+							</div>
+							<div>
+								<form className="form__body" action="#">
+									<div className="u-mb-md">
+										<input
+											className="form__input"
+											id="email"
+											type="email"
+											placeholder="Email"
+											required
+										/>
+										<input
+											className="form__input"
+											id="password"
+											type="password"
+											placeholder="Password"
+											required
+										/>
+									</div>
+									<button
+										onClick={this.props.shift}
+										className="form__btn form__btn--big">
 										Login
 									</button>
-								</div>
-							</form>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
-				<footer className="footer">
+				{/* <footer className="footer">
 					<span>2017 - front-end labs Light IT</span>
-				</footer>
+				</footer> */}
 			</>
 		);
 	}

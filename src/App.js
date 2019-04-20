@@ -5,13 +5,14 @@ import ProductList from './components/ProductList';
 
 class App extends Component {
 	state = {
-		loginPage: true
+		showLoginPage: true
 	};
 
-	handleClick = () => this.setState({ loginPage: !this.state.loginPage });
+	handleClick = () =>
+		this.setState({ showLoginPage: !this.state.showLoginPage });
 
 	render() {
-		const toRender = this.state.loginPage ? (
+		const toRender = this.state.showLoginPage ? (
 			<LoginPage shift={this.handleClick} />
 		) : (
 			<ProductList shift={this.handleClick} />

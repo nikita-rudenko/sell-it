@@ -2,3 +2,15 @@
 
 $color-primary: #00b3be;
 $color-white: #f2f2f2;
+
+// SHADOW
+
+$shadow-light: 0 1rem 2rem rgba(0, 0, 0, 0.07);
+$shadow-dark: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+
+// MEDIA_QUERIES
+
+$bp-largest: 75em; // 1200px
+$bp-large: 68.75em; // 1100px
+$bp-medium: 56.25em; // 900px
+$bp-small: 37.5em; // 600px

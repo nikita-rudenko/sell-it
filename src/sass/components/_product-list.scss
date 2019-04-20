@@ -1,23 +1,33 @@
 .product-list {
-	width: 80%;
-	margin: 0 auto;
-	padding: 10rem 0rem;
+	max-width: 1200px;
+	margin: 6rem auto;
+	padding: 0 4.5rem;
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	flex: 1 0 auto;
+	flex-flow: row wrap;
 
-	&::after {
-		content: '';
-		flex: auto;
+	@media only screen and (max-width: $bp-medium) {
+		padding: 0 5rem 0 5rem;
+	}
+
+	@media only screen and (max-width: $bp-small) {
+		justify-content: center;
 	}
 }
 
 .product {
-	width: 32rem;
 	height: 25rem;
-	margin: 2rem;
+	flex: 0 31%;
+	margin: 1rem;
+	box-shadow: $shadow-dark;
 	font-family: 'Arial-BoldMT';
+
+	@media only screen and (max-width: $bp-medium) {
+		flex: 0 46.5%;
+	}
+
+	@media only screen and (max-width: $bp-small) {
+		flex: 0 100%;
+	}
 
 	&__image-wrapper {
 		width: 100%;
