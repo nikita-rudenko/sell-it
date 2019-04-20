@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 
 export default class LoginPage extends Component {
+	state = {
+		showSignIn: true
+	};
+
+	handleSwitchTabs = show => {
+		this.setState({
+			showSignIn: show
+		});
+	};
+
 	render() {
 		return (
 			<>
@@ -24,8 +34,24 @@ export default class LoginPage extends Component {
 
 						<div className="sidebar__form form">
 							<div className="form__tabs u-mb-md">
-								<button className="form__btn form__btn--small">Sign In</button>
-								<button className="form__btn form__btn--small">Sign Up</button>
+								<button
+									onClick={() => this.handleSwitchTabs(true)}
+									className={
+										this.state.showSignIn
+											? 'form__btn--active form__btn--small'
+											: 'form__btn form__btn--small'
+									}>
+									Sign In
+								</button>
+								<button
+									onClick={() => this.handleSwitchTabs(false)}
+									className={
+										this.state.showSignIn
+											? 'form__btn form__btn--small'
+											: 'form__btn--active form__btn--small'
+									}>
+									Sign Up
+								</button>
 							</div>
 							<div>
 								<form className="form__body" action="#">
@@ -48,7 +74,7 @@ export default class LoginPage extends Component {
 									<button
 										onClick={this.props.shift}
 										className="form__btn form__btn--big">
-										Login
+										{this.state.showSignIn ? 'Login' : 'Register'}
 									</button>
 								</form>
 							</div>
