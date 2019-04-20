@@ -43,7 +43,9 @@ export default class LoginPage extends Component {
 									/>
 								</div>
 								<div className="form-group">
-									<button className="btn btn-big">Login</button>
+									<button onClick={this.props.shift} className="btn btn-big">
+										Login
+									</button>
 								</div>
 							</form>
 						</div>
