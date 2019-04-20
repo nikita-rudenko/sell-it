@@ -12,6 +12,7 @@
 
 	@media only screen and (max-width: $bp-small) {
 		flex-wrap: wrap;
+		box-shadow: none;
 	}
 
 	&__logo {
@@ -35,11 +36,16 @@
 	@media only screen and (max-width: $bp-small) {
 		order: 1;
 		flex: 1 0 90%;
-		margin: 1rem 5%;
+		width: 100%;
+		margin: 0 5%;
+		padding: 1rem 0 0 0;
+		background-color: #fff;
+		box-shadow: $shadow-light;
 	}
 
 	&__input {
 		height: 2rem;
+		width: 100%;
 		font-size: 1.6rem;
 		margin: 0;
 		background: transparent;
