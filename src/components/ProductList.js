@@ -6,7 +6,7 @@ import Footer from './Footer';
 export default function ProductList(props) {
 	return (
 		<>
-			<Header shift={this.props.shift} />
+			<Header shift={props.shift} />
 			<main>
 				<section className="product-list u-mt-huge">
 					<ProductItem />

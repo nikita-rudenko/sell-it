@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Header() {
+export default function Header(props) {
 	return (
 		<header className="header">
 			<img
@@ -29,7 +29,7 @@ export default function Header() {
 					/>
 					<div className="user-block__name">Kim Evans</div>
 				</div>
-				<button onClick={this.props.shift} className="user-block__sign-out">
+				<button onClick={props.shift} className="user-block__sign-out">
 					<img
 						src="img/icons/fa-sign-out.png"
 						title="Sign Out"
