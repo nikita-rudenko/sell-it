@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './sass/main.scss';
-import LoginPage from './components/LoginPage';
-import ProductList from './components/ProductList';
+import LoginPage from './components/LoginPage/LoginPage';
+import ProductList from './components/ProductList/ProductList';
 
 class App extends Component {
 	state = {

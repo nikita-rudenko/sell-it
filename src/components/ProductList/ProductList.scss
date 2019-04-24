@@ -1,0 +1,17 @@
+@import '../../sass/variables.scss';
+
+.product-list {
+	max-width: 1200px;
+	margin: 6rem auto;
+	padding: 0 4.5rem;
+	display: flex;
+	flex-flow: row wrap;
+
+	@media only screen and (max-width: $bp-medium) {
+		padding: 0 5rem 0 5rem;
+	}
+
+	@media only screen and (max-width: $bp-small) {
+		justify-content: center;
+	}
+}

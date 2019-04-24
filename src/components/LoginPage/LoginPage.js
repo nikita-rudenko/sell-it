@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './Form.scss';
+import './LoginPage.scss';
 
 export default class LoginPage extends Component {
 	state = {

@@ -1,3 +1,5 @@
+@import 'variables';
+
 @font-face {
 	font-family: 'Arial-MT';
 	src: url(../fonts/Arial-MT.otf);
@@ -7,8 +9,6 @@
 	font-family: 'Arial-BoldMT';
 	src: url(../fonts/Arial-BoldMT.otf);
 }
-
-@import 'variables';
 
 * {
 	margin: 0;

@@ -1,7 +1,8 @@
 import React from 'react';
-import Header from './Header';
-import ProductItem from './ProductItem';
-import Footer from './Footer';
+import Header from '../Header/Header';
+import ProductItem from './ProductItem/ProductItem';
+import Footer from '../Footer/Footer';
+import './ProductList.scss';
 
 export default function ProductList(props) {
 	return (
