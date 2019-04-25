@@ -1,43 +1,54 @@
-import React from 'react';
-import './Header.scss';
+import React from "react";
+// import "./Header.scss";
+import styles from "./Header.module.scss";
+
+import PropTypes from "prop-types";
+
+const componentProps = {
+  shift: PropTypes.func.isRequired
+};
 
 export default function Header(props) {
-	return (
-		<header className="header">
-			<img
-				className="header__logo logo-small"
-				src="img/logo-small-min.png"
-				alt="Small logo."
-			/>
-			<div className="header__search search">
-				<img
-					className="search__icon"
-					src="img/icons/fa-search.png"
-					alt="Search icon"
-				/>
-				<input
-					className="search__input"
-					type="text"
-					placeholder="Try to find something"
-				/>
-			</div>
-			<div className="user-block">
-				<div className="user-block__profile">
-					<img
-						className="user-block__avatar"
-						src="img/avatar-min.png"
-						alt="User avatar"
-					/>
-					<div className="user-block__name">Kim Evans</div>
-				</div>
-				<button onClick={props.shift} className="user-block__sign-out">
-					<img
-						src="img/icons/fa-sign-out.png"
-						title="Sign Out"
-						alt="Sign Out."
-					/>
-				</button>
-			</div>
-		</header>
-	);
+  const { shift } = props;
+
+  return (
+    <header className={styles.header}>
+      <img
+        className={styles.header__logo}
+        src="img/logo-small-min.png"
+        alt="Small logo."
+      />
+      <div className={styles.search}>
+        <img
+          className={styles.search__icon}
+          src="img/icons/fa-search.png"
+          alt="Search icon"
+        />
+        <input
+          className={styles.search__input}
+          type="text"
+          placeholder="Try to find something"
+        />
+      </div>
+      <div className={styles.userblock}>
+        <div className={styles.userblock__profile}>
+          <img
+            className={styles.userblock__avatar}
+            src="img/avatar-min.png"
+            alt="User avatar"
+          />
+          <div className={styles.userblock__name}>Kim Evans</div>
+        </div>
+        <button onClick={shift} className={styles.userblock__signout}>
+          <img
+            src="img/icons/fa-sign-out.png"
+            title="Sign Out"
+            alt="Sign Out."
+          />
+        </button>
+      </div>
+    </header>
+  );
 }
+
+Header.propTypes = componentProps;
