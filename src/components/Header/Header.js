@@ -38,6 +38,10 @@ export default function Header() {
 						alt="Sign Out."
 					/>
 				</Link>
+				<div className={styles.submenu}>
+					<button className={styles.subaction}>Add new post</button>
+					<button className={styles.subaction}>Profile</button>
+				</div>
 			</div>
 		</header>
 	);
