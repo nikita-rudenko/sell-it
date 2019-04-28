@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../Header/Header';
-import ProductItem from './ProductItem/ProductItem';
+import ProductItem from '../ProductItem/ProductItem';
 import Footer from '../Footer/Footer';
 import styles from './ProductList.module.scss';
 

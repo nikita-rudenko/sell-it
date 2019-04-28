@@ -63,10 +63,8 @@ export default class Form extends Component {
 								required
 							/>
 						</div>
-						<Link to="/">
-							<button className={`${styles.btn} ${styles['btn-big']}`}>
-								{showSignIn ? 'Login' : 'Register'}
-							</button>
+						<Link className={`${styles.btn} ${styles.btnBig}`} to="/">
+							{showSignIn ? 'Login' : 'Register'}
 						</Link>
 					</form>
 				</div>

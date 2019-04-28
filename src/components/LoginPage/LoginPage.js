@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './LoginPage.module.scss';
-import Form from './Form/Form';
+import Form from '../Form/Form';
 
 export default class LoginPage extends Component {
 	render() {
@@ -10,12 +10,8 @@ export default class LoginPage extends Component {
 					<div className={styles.background} />
 
 					<div className={styles.sidebar}>
-						<div className="sidebar__logo">
-							<img
-								className="logo-white"
-								src="/img/logo-big-min.png"
-								alt="Big logo."
-							/>
+						<div className={styles.logo}>
+							<img src="/img/logo-big-min.png" alt="Big logo." />
 						</div>
 
 						<Form />

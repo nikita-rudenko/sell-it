@@ -1,7 +1,5 @@
-@import '../../sass/variables.scss';
-
 .footer {
-	background: $color-primary;
+	background: var(--color-primary);
 	height: 5rem;
 	padding: 1.7rem;
 	overflow: hidden;
