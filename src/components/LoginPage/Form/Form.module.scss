@@ -1,22 +1,23 @@
-@import '../../sass/variables.scss';
+@import '../../../sass/variables.scss';
 
 .form {
-	&__tabs {
+	.tabs {
 		display: flex;
 		justify-content: space-between;
+		margin-bottom: 3rem;
 
 		@media only screen and (max-width: $bp-small) {
 			justify-content: space-evenly;
 		}
 	}
 
-	&__body {
+	.body {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 	}
 
-	&__input {
+	.input {
 		width: 100%;
 		height: 3.5rem;
 		padding: 0 0.5rem;
@@ -37,7 +38,7 @@
 		}
 	}
 
-	&__btn {
+	.btn {
 		background: $color-white;
 		padding: 0;
 		border: none;
@@ -45,19 +46,18 @@
 		color: inherit;
 		height: 3.5rem;
 		cursor: pointer;
+	}
 
-		&--small {
-			width: 15rem;
-		}
+	.btnSmall {
+		width: 15rem;
+	}
 
-		&--big {
-			width: 100%;
-		}
+	.btnBig {
+		width: 100%;
+	}
 
-		// Experimental
-		&--active {
-			border: 2px solid rgb(112, 111, 111);
-			background: rgb(175, 167, 167);
-		}
+	.btnActive {
+		border: 2px solid rgb(112, 111, 111);
+		background: rgb(175, 167, 167);
 	}
 }

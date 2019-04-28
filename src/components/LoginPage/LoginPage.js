@@ -1,32 +1,15 @@
 import React, { Component } from 'react';
-import './Form.scss';
-import './LoginPage.scss';
-import { Link } from 'react-router-dom';
+import styles from './LoginPage.module.scss';
+import Form from './Form/Form';
 
 export default class LoginPage extends Component {
-	state = {
-		showSignIn: true
-	};
-
-	handleSwitchTabs = show => {
-		this.setState({
-			showSignIn: show
-		});
-	};
-
 	render() {
 		return (
 			<>
-				<div className="login-page">
-					<div className="background">
-						{/* <img
-							className="logo-small"
-							src="/img/logo-small-min.png"
-							alt="Small logo."
-						/> */}
-					</div>
+				<div className={styles['login-page']}>
+					<div className={styles.background} />
 
-					<div className="sidebar">
+					<div className={styles.sidebar}>
 						<div className="sidebar__logo">
 							<img
 								className="logo-white"
@@ -35,53 +18,7 @@ export default class LoginPage extends Component {
 							/>
 						</div>
 
-						<div className="sidebar__form form">
-							<div className="form__tabs u-mb-md">
-								<button
-									onClick={() => this.handleSwitchTabs(true)}
-									className={
-										this.state.showSignIn
-											? 'form__btn--active form__btn--small'
-											: 'form__btn form__btn--small'
-									}>
-									Sign In
-								</button>
-								<button
-									onClick={() => this.handleSwitchTabs(false)}
-									className={
-										this.state.showSignIn
-											? 'form__btn form__btn--small'
-											: 'form__btn--active form__btn--small'
-									}>
-									Sign Up
-								</button>
-							</div>
-							<div>
-								<form className="form__body" action="#">
-									<div className="u-mb-md">
-										<input
-											className="form__input"
-											id="email"
-											type="email"
-											placeholder="Email"
-											required
-										/>
-										<input
-											className="form__input"
-											id="password"
-											type="password"
-											placeholder="Password"
-											required
-										/>
-									</div>
-									<Link to="/">
-										<button className="form__btn form__btn--big">
-											{this.state.showSignIn ? 'Login' : 'Register'}
-										</button>
-									</Link>
-								</form>
-							</div>
-						</div>
+						<Form />
 					</div>
 				</div>
 				{/* <footer className="footer">

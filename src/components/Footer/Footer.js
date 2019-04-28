@@ -1,6 +1,8 @@
 import React from 'react';
-import './Footer.scss';
+import styles from './Footer.module.scss';
 
 export default function Footer() {
-	return <footer className="footer">2017 - front-end labs Light IT</footer>;
+	return (
+		<footer className={styles.footer}>2017 - front-end labs Light IT</footer>
+	);
 }
