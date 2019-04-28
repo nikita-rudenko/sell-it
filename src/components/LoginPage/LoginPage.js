@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Form.scss';
 import './LoginPage.scss';
+import { Link } from 'react-router-dom';
 
 export default class LoginPage extends Component {
 	state = {
@@ -73,11 +74,11 @@ export default class LoginPage extends Component {
 											required
 										/>
 									</div>
-									<button
-										onClick={this.props.shift}
-										className="form__btn form__btn--big">
-										{this.state.showSignIn ? 'Login' : 'Register'}
-									</button>
+									<Link to="/">
+										<button className="form__btn form__btn--big">
+											{this.state.showSignIn ? 'Login' : 'Register'}
+										</button>
+									</Link>
 								</form>
 							</div>
 						</div>
