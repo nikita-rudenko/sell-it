@@ -1,0 +1,21 @@
+.errorContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.error {
+  color: #f25829;
+  font-size: 5rem;
+}
+
+.info {
+  color: #515050;
+}
+
+.link {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+}
