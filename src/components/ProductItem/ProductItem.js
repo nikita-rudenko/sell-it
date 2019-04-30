@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './ProductItem.module.scss';
+import React from "react";
+import styles from "./ProductItem.module.scss";
 
 export default function ProductItem(props) {
   const { theme, images } = props.item;
@@ -9,14 +9,14 @@ export default function ProductItem(props) {
       <div className={styles.imageWrapper}>
         <img
           className={styles.image}
-          src={images.length === 0 ? 'img/default.jpg' : images[0].file}
-          alt='Product'
+          src={images.length ? images[0].file : "img/default.jpg"}
+          alt="Product"
         />
       </div>
       <div className={styles.info}>
-        <span className={styles.title}>{theme ? theme : 'Product Title'}</span>
+        <span className={styles.title}>{theme ? theme : "Product Title"}</span>
         <span className={styles.btn}>
-          <img src='img/icons/fa-eye.png' alt='Eye' />
+          <img src="img/icons/fa-eye.png" alt="Eye" />
         </span>
       </div>
     </div>

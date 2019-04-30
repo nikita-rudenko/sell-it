@@ -1,30 +1,19 @@
-import React, { Component } from 'react';
-import Header from '../Header/Header';
-import ProductItem from '../ProductItem/ProductItem';
-import Footer from '../Footer/Footer';
-import styles from './ProductList.module.scss';
+import React, { Component } from "react";
+import Header from "../Header/Header";
+import ProductItem from "../ProductItem/ProductItem";
+import Footer from "../Footer/Footer";
+import styles from "./ProductList.module.scss";
+import { connect } from "react-redux";
+import { fetchProducts } from "../../actions";
 
-export default class ProductList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      data: null
-    };
-  }
-
+class ProductList extends Component {
   componentDidMount() {
-    fetch('http://light-it-04.tk/api/posters/')
-      .then(res => res.json())
-      .then(obj =>
-        this.setState({
-          data: obj.data
-        })
-      );
+    this.props.fetchProducts();
   }
 
   render() {
-    const { data } = this.state;
+    const { productList } = this.props;
+    const data = productList.data;
 
     return (
       <>
@@ -35,7 +24,7 @@ export default class ProductList extends Component {
               ? data.map(item => {
                   return <ProductItem key={item.pk} item={item} />;
                 })
-              : 'Loading...'}
+              : "Loading..."}
           </section>
         </main>
         <Footer />
@@ -43,3 +32,16 @@ export default class ProductList extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  productList: state.productList
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchProducts: () => dispatch(fetchProducts())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductList);
