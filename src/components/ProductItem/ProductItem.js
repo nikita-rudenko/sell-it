@@ -1,24 +1,27 @@
-import React from "react";
-import styles from "./ProductItem.module.scss";
+import React from 'react';
+import styles from './ProductItem.module.scss';
+import CSSModules from 'react-css-modules';
 
-export default function ProductItem(props) {
+function ProductItem(props) {
   const { theme, images } = props.item;
 
   return (
-    <div className={styles.product}>
-      <div className={styles.imageWrapper}>
+    <div styleName='product'>
+      <div styleName='image-wrapper'>
         <img
-          className={styles.image}
-          src={images.length ? images[0].file : "img/default.jpg"}
-          alt="Product"
+          styleName='image'
+          src={images.length ? images[0].file : 'img/default.jpg'}
+          alt='Product'
         />
       </div>
-      <div className={styles.info}>
-        <span className={styles.title}>{theme ? theme : "Product Title"}</span>
-        <span className={styles.btn}>
-          <img src="img/icons/fa-eye.png" alt="Eye" />
+      <div styleName='info'>
+        <span styleName='title'>{theme ? theme : 'Product Title'}</span>
+        <span>
+          <img src='img/icons/fa-eye.png' alt='Eye' />
         </span>
       </div>
     </div>
   );
 }
+
+export default CSSModules(ProductItem, styles);

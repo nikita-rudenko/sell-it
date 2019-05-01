@@ -1,26 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './LoginPage.module.scss';
 import Form from '../Form/Form';
+import CSSModules from 'react-css-modules';
 
-export default class LoginPage extends Component {
-	render() {
-		return (
-			<>
-				<div className={styles['login-page']}>
-					<div className={styles.background} />
+function LoginPage() {
+  return (
+    <>
+      <div styleName='login-page'>
+        <div styleName='background' />
 
-					<div className={styles.sidebar}>
-						<div className={styles.logo}>
-							<img src="/img/logo-big-min.png" alt="Big logo." />
-						</div>
+        <div styleName='sidebar'>
+          <div>
+            <img src='/img/logo-big-min.png' alt='Big logo.' />
+          </div>
 
-						<Form />
-					</div>
-				</div>
-				{/* <footer className="footer">
+          <Form />
+        </div>
+      </div>
+      {/* <footer className="footer">
 					<span>2017 - front-end labs Light IT</span>
 				</footer> */}
-			</>
-		);
-	}
+    </>
+  );
 }
+
+export default CSSModules(LoginPage, styles, { allowMultiple: true });

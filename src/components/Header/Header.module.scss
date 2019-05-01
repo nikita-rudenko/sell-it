@@ -1,126 +1,126 @@
 .header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	background-color: #fff;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: 6rem;
-	box-shadow: var(--shadow-light);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 6rem;
+  box-shadow: var(--shadow-light);
 
-	@media only screen and (max-width: 37.5em) {
-		flex-wrap: wrap;
-		box-shadow: none;
-	}
+  @media only screen and (max-width: 37.5em) {
+    flex-wrap: wrap;
+    box-shadow: none;
+  }
 }
 
 .logo {
-	width: 12rem;
-	margin: 0 5rem;
-	@media only screen and (max-width: 56.25em) {
-		width: 10rem;
-		margin: 0 3rem;
-	}
+  width: 12rem;
+  margin: 0 5rem;
+  @media only screen and (max-width: 56.25em) {
+    width: 10rem;
+    margin: 0 3rem;
+  }
 }
 
 .search {
-	display: inline-flex;
-	flex: 0 1 40%;
-	padding: 0 2rem;
-	position: relative;
-	border-bottom: 2px solid var(--color-primary);
-	overflow: hidden;
+  display: inline-flex;
+  flex: 0 1 40%;
+  padding: 0 2rem;
+  position: relative;
+  border-bottom: 2px solid var(--color-primary);
+  overflow: hidden;
 
-	@media only screen and (max-width: 37.5em) {
-		order: 1;
-		flex: 1 0 90%;
-		width: 100%;
-		margin: 0 5%;
-		padding: 1rem 0 0 0;
-		background-color: #fff;
-		box-shadow: var(--shadow-light);
-	}
+  @media only screen and (max-width: 37.5em) {
+    order: 1;
+    flex: 1 0 90%;
+    width: 100%;
+    margin: 0 5%;
+    padding: 1rem 0 0 0;
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+  }
 
-	.input {
-		height: 2rem;
-		width: 100%;
-		font-size: 1.6rem;
-		margin: 0;
-		background: transparent;
-		border: none;
-		outline: 0;
-		color: #000;
-	}
+  .input {
+    height: 2rem;
+    width: 100%;
+    font-size: 1.6rem;
+    margin: 0;
+    background: transparent;
+    border: none;
+    outline: 0;
+    color: #000;
+  }
 
-	.icon {
-		padding: 0.5rem;
-	}
+  .icon {
+    padding: 0.5rem;
+  }
 }
 
 .userblock {
-	flex: 0 1 30%;
-	display: flex;
-	position: relative;
-	flex-direction: row;
-	justify-content: space-between;
-	height: 100%;
-	font-family: 'Arial-BoldMT';
-	background-color: var(--color-primary);
+  flex: 0 1 30%;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+  font-family: 'Arial-BoldMT';
+  background-color: var(--color-primary);
 
-	.profile {
-		display: flex;
-		align-items: center;
-		flex: 0 0 50%;
-		padding-left: 1rem;
-	}
+  .profile {
+    display: flex;
+    align-items: center;
+    flex: 0 0 60%;
+    padding-left: 1rem;
+  }
 
-	.name {
-		font-size: 1.6rem;
-		color: var(--color-white);
-		margin: 0 1rem;
-	}
+  .name {
+    font-size: 1.6rem;
+    color: var(--color-white);
+    margin: 0 1rem;
+  }
 
-	.avatar {
-		width: 40px;
-		height: 40px;
-		border-radius: 50%;
-	}
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
 }
 
-.signout {
-	align-self: center;
-	margin-left: auto;
-	background: none;
-	cursor: pointer;
-	padding-right: 1rem;
+.sign-out {
+  align-self: center;
+  margin-left: auto;
+  background: none;
+  cursor: pointer;
+  padding-right: 1rem;
 }
 
-.submenu {
-	display: none;
-	position: absolute;
+.sub-menu {
+  display: none;
+  position: absolute;
 
-	color: #fff;
-	width: 100%;
-	height: 4rem;
-	box-shadow: var(--shadow-light);
-	z-index: 1;
-	margin-top: 6rem;
+  color: #fff;
+  width: 100%;
+  height: 4rem;
+  box-shadow: var(--shadow-light);
+  z-index: 1;
+  margin-top: 6rem;
 }
 
-.userblock:hover .submenu {
-	display: flex;
-	align-items: stretch;
+.userblock:hover .sub-menu {
+  display: flex;
+  align-items: stretch;
 }
 
-.subaction {
-	flex: 1 1 50%;
-	font-size: 1.4rem;
-	color: #fff;
-	font-family: 'ArialMT';
-	cursor: pointer;
-	background-color: var(--color-primary);
-	border: none;
-	border-left: 3px solid #000;
+.sub-action {
+  flex: 1 1 50%;
+  font-size: 1.4rem;
+  color: #fff;
+  font-family: 'ArialMT';
+  cursor: pointer;
+  background-color: var(--color-primary);
+  border: none;
+  border-left: 3px solid #000;
 }

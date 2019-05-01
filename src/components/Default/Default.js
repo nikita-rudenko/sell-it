@@ -1,17 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CSSModules from 'react-css-modules';
 import styles from './Default.module.scss';
 
-export default function Default({ location }) {
+function Default({ location }) {
   return (
-    <div className={styles.errorContainer}>
-      <h1 className={styles.error}>Error 404</h1>
-      <h2 className={styles.info}>
+    <div styleName='container'>
+      <h1 styleName='error'>Error 404</h1>
+      <h2 styleName='info'>
         No match for <code>{location.pathname}</code>
       </h2>
-      <Link className={styles.link} to='/'>
+      <Link styleName='link' to='/'>
         Main page
       </Link>
     </div>
   );
 }
+
+export default CSSModules(Default, styles);

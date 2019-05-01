@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import Header from "../Header/Header";
-import ProductItem from "../ProductItem/ProductItem";
-import Footer from "../Footer/Footer";
-import styles from "./ProductList.module.scss";
-import { connect } from "react-redux";
-import { fetchProducts } from "../../actions";
+import React, { Component } from 'react';
+import Header from '../Header/Header';
+import ProductItem from '../ProductItem/ProductItem';
+import Footer from '../Footer/Footer';
+import styles from './ProductList.module.scss';
+import CSSModules from 'react-css-modules';
+import { connect } from 'react-redux';
+import { fetchProducts } from '../../actions';
 
 class ProductList extends Component {
   componentDidMount() {
@@ -19,12 +20,12 @@ class ProductList extends Component {
       <>
         <Header />
         <main>
-          <section className={styles.productList}>
+          <section styleName='product-list'>
             {data
               ? data.map(item => {
                   return <ProductItem key={item.pk} item={item} />;
                 })
-              : "Loading..."}
+              : 'Loading...'}
           </section>
         </main>
         <Footer />
@@ -44,4 +45,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductList);
+)(CSSModules(ProductList, styles));

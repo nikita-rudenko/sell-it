@@ -1,15 +1,15 @@
-.productList {
-	max-width: 1200px;
-	margin: 10rem auto 6rem auto;
-	padding: 0 4.5rem;
-	display: flex;
-	flex-flow: row wrap;
+.product-list {
+  max-width: 1200px;
+  margin: 10rem auto 6rem auto;
+  padding: 0 4.5rem;
+  display: flex;
+  flex-flow: row wrap;
 
-	@media only screen and (max-width: 56.25em) {
-		padding: 0 5rem 0 5rem;
-	}
+  @media only screen and (max-width: 56.25em) {
+    padding: 0 5rem 0 5rem;
+  }
 
-	@media only screen and (max-width: 37.5em) {
-		justify-content: center;
-	}
+  @media only screen and (max-width: 37.5em) {
+    justify-content: center;
+  }
 }
