@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import styles from './ProductList.module.scss';
 import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
-import { fetchProducts } from '../../actions';
+import { fetchProducts } from '../../actions/ProductActions';
 
 class ProductList extends Component {
   componentDidMount() {
