@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { getDetails } from '../../actions/ProductActions';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import Loading from '../Loading/Loading';
 
 class ProductDetails extends Component {
   componentDidMount() {
@@ -66,7 +67,7 @@ class ProductDetails extends Component {
               </div>
             </div>
           ) : (
-            'Loading...'
+            <Loading />
           )}
         </div>
         <Footer />

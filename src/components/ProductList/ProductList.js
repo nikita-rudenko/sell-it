@@ -6,6 +6,7 @@ import styles from './ProductList.module.scss';
 import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../../actions/ProductActions';
+import Loading from '../Loading/Loading';
 
 class ProductList extends Component {
   componentDidMount() {
@@ -13,11 +14,13 @@ class ProductList extends Component {
   }
 
   mapProducts = data => {
-    return data
-      ? data.map(item => {
-          return <ProductItem key={item.pk} item={item} />;
-        })
-      : 'Loading...';
+    return data ? (
+      data.map(item => {
+        return <ProductItem key={item.pk} item={item} />;
+      })
+    ) : (
+      <Loading />
+    );
   };
 
   render() {
