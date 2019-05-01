@@ -17,17 +17,19 @@ class ProductItem extends Component {
     const title = theme ? theme : 'Product Title';
 
     return (
-      <div styleName='product'>
+      <Link
+        styleName='product'
+        to='/details'
+        onClick={() => this.setProductDetailsID(pk)}
+      >
         <div styleName='image-wrapper'>
           <img styleName='image' src={image} alt='Product' />
         </div>
         <div styleName='info'>
           <span styleName='title'>{title}</span>
-          <Link to='/details' onClick={() => this.setProductDetailsID(pk)}>
-            <img src='img/icons/fa-eye.png' alt='Eye' />
-          </Link>
+          <img src='img/icons/fa-eye.png' alt='Eye' />
         </div>
-      </div>
+      </Link>
     );
   }
 }

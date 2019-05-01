@@ -4,6 +4,8 @@
   margin: 1rem;
   box-shadow: var(--shadow-dark);
   font-family: 'Arial-BoldMT';
+  text-decoration: none;
+  transition: all 0.2s;
 
   @media only screen and (max-width: 56.25em) {
     flex: 0 45.5%;
@@ -14,15 +16,25 @@
   }
 }
 
+.product:hover {
+  transform: scale(1.02);
+}
+
 .image-wrapper {
   width: 100%;
   height: 80%;
+  overflow: hidden;
 }
 
 .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: all 0.2s;
+}
+
+.image:hover {
+  transform: scale(1.04);
 }
 
 .info {
