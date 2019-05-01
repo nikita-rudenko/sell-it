@@ -12,6 +12,14 @@ class ProductList extends Component {
     this.props.fetchProducts();
   }
 
+  mapProducts = data => {
+    return data
+      ? data.map(item => {
+          return <ProductItem key={item.pk} item={item} />;
+        })
+      : 'Loading...';
+  };
+
   render() {
     const { productList } = this.props;
     const data = productList.data;
@@ -20,13 +28,7 @@ class ProductList extends Component {
       <>
         <Header />
         <main>
-          <section styleName='product-list'>
-            {data
-              ? data.map(item => {
-                  return <ProductItem key={item.pk} item={item} />;
-                })
-              : 'Loading...'}
-          </section>
+          <section styleName='product-list'>{this.mapProducts(data)}</section>
         </main>
         <Footer />
       </>
