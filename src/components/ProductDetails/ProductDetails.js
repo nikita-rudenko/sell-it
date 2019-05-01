@@ -10,21 +10,21 @@ import Loading from '../Loading/Loading';
 
 class ProductDetails extends Component {
   componentDidMount() {
-    const { productID } = this.props;
+    const { productID, isFetching } = this.props;
 
-    if (productID) {
+    if (productID && !isFetching) {
       this.props.getDetails(productID);
     }
   }
 
   render() {
-    const { details } = this.props;
+    const { details, isFetching } = this.props;
 
     return (
       <>
         <Header />
         <div>
-          {details ? (
+          {details && !isFetching ? (
             <div styleName='container'>
               <div styleName='details-wrapper'>
                 <div styleName='image-wrapper'>
@@ -78,7 +78,8 @@ class ProductDetails extends Component {
 
 const mapStateToProps = state => ({
   productID: state.productID,
-  details: state.details
+  details: state.details,
+  isFetching: state.isFetching
 });
 
 const mapDispatchToProps = dispatch => ({

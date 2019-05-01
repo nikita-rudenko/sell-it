@@ -1,11 +1,13 @@
 import {
-  FETCH_PRODUCTS,
-  GET_DETAILS,
+  FETCH_PRODUCTS_REQUEST,
+  FETCH_PRODUCTS_SUCCESS,
+  GET_DETAILS_REQUEST,
+  GET_DETAILS_SUCCESS,
   SET_PRODUCT_ID
 } from '../actions/ProductActions';
 
 const initialState = {
-  isFetching: true,
+  isFetching: false,
   productList: [],
   productID: null,
   details: null
@@ -13,14 +15,20 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCH_PRODUCTS:
+    case FETCH_PRODUCTS_REQUEST:
+      return { ...state, isFetching: true };
+
+    case FETCH_PRODUCTS_SUCCESS:
       return { ...state, productList: action.payload, isFetching: false };
 
-    case GET_DETAILS:
+    case GET_DETAILS_REQUEST:
+      return { ...state, isFetching: true };
+
+    case GET_DETAILS_SUCCESS:
       return { ...state, details: action.payload, isFetching: false };
 
     case SET_PRODUCT_ID:
-      return { ...state, productID: action.payload, isFetching: false };
+      return { ...state, productID: action.payload };
 
     default:
       return state;
