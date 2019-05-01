@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './ProductDetails.module.scss';
 import CSSModules from 'react-css-modules';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getDetails } from '../../actions/ProductActions';
 import Header from '../Header/Header';
@@ -9,13 +10,15 @@ import Footer from '../Footer/Footer';
 class ProductDetails extends Component {
   componentDidMount() {
     const { productID } = this.props;
-    this.props.getDetails(productID);
+
+    if (productID) {
+      this.props.getDetails(productID);
+    }
   }
 
   render() {
     const { details } = this.props;
 
-    console.log(details);
     return (
       <>
         <Header />
@@ -56,6 +59,9 @@ class ProductDetails extends Component {
                     sagittis quam faucibus. Nam sed convallis elit, ut placerat
                     dolor.
                   </p>
+                  <Link styleName='link' to='/'>
+                    Back to Product List
+                  </Link>
                 </div>
               </div>
             </div>

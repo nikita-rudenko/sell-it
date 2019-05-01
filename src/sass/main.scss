@@ -1,52 +1,53 @@
 @font-face {
-	font-family: 'Arial-MT';
-	src: url(../fonts/Arial-MT.otf);
+  font-family: 'Arial-MT';
+  src: url(../fonts/Arial-MT.otf);
 }
 
 @font-face {
-	font-family: 'Arial-BoldMT';
-	src: url(../fonts/Arial-BoldMT.otf);
+  font-family: 'Arial-BoldMT';
+  src: url(../fonts/Arial-BoldMT.otf);
 }
 
 * {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 *,
 *::after,
 *::before {
-	box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 :root {
-	// COLORS
-	--color-primary: #00b3be;
-	--color-white: #f2f2f2;
-	--color-success: #91d763;
+  // COLORS
+  --color-primary: #00b3be;
+  --color-white: #f2f2f2;
+  --color-success: #91d763;
+  --color-dark: #4a4a4a;
 
-	// SHADOW
-	--shadow-light: 0 1rem 2rem rgba(0, 0, 0, 0.07);
-	--shadow-dark: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  // SHADOW
+  --shadow-light: 0 1rem 2rem rgba(0, 0, 0, 0.07);
+  --shadow-dark: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 
-	// MEDIA_QUERIES
+  // MEDIA_QUERIES
 
-	// $bp-largest: 75em; 1200px
-	// $bp-large: 68.75em; 1100px
-	// $bp-medium: 56.25em; 900px
-	// $bp-small: 37.5em; 600px
+  // $bp-largest: 75em; 1200px
+  // $bp-large: 68.75em; 1100px
+  // $bp-medium: 56.25em; 900px
+  // $bp-small: 37.5em; 600px
 }
 
 html {
-	box-sizing: border-box;
-	font-size: 62.5%; // 1rem === 10px, 10px/16px === 62.5%
-	font-family: 'Arial-MT';
+  box-sizing: border-box;
+  font-size: 62.5%; // 1rem === 10px, 10px/16px === 62.5%
+  font-family: 'Arial-MT';
 
-	@media only screen and (max-width: var(--bp-large)) {
-		font-size: 50%;
-	}
+  @media only screen and (max-width: var(--bp-large)) {
+    font-size: 50%;
+  }
 }
 
 body {
-	position: relative;
+  position: relative;
 }

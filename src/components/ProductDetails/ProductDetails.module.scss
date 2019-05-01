@@ -39,6 +39,10 @@
   flex-direction: column;
 }
 
+.title {
+  font-size: 3.2rem;
+}
+
 .info-block {
   display: flex;
   margin: 1rem 0;
@@ -46,29 +50,29 @@
 }
 
 .from {
-  color: #00b3be;
+  color: var(--color-primary);
   font-family: 'Arial-BoldMT';
   font-size: 18px;
   margin-right: 1rem;
 }
 
 .author {
-  color: #4a4a4a;
+  color: var(--color-dark);
 }
 
 .price {
-  color: #91d763;
+  color: var(--color-success);
   font-family: 'Arial-BoldMT';
   font-size: 32px;
   font-weight: 400;
 }
 
-.title {
-  font-size: 3.2rem;
-}
-
 .description {
   font-size: 1.2rem;
-  color: #4a4a4a;
+  color: var(--color-dark);
   margin-bottom: 1rem;
+}
+
+.link {
+  font-size: 1.2rem;
 }

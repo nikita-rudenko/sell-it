@@ -7,7 +7,7 @@ import {
 const initialState = {
   isFetching: true,
   productList: [],
-  productID: 247,
+  productID: null,
   details: null
 };
 

@@ -7,8 +7,6 @@ import { setProductID } from '../../actions/ProductActions';
 
 class ProductItem extends Component {
   setProductDetailsID(id) {
-    console.log(id);
-
     this.props.setProductID(id);
   }
 
