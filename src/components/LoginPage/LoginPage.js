@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from './LoginPage.module.scss';
 import Form from '../Form/Form';
 import CSSModules from 'react-css-modules';
+import styles from './LoginPage.module.scss';
+import logo from '../../img/logo-big.png';
 
 function LoginPage() {
   return (
@@ -11,7 +12,7 @@ function LoginPage() {
 
         <div styleName='sidebar'>
           <div>
-            <img src='/img/logo-big-min.png' alt='Big logo.' />
+            <img src={logo} alt='Big logo.' />
           </div>
 
           <Form />

@@ -15,6 +15,7 @@
 
   @media only screen and (max-width: 37.5em) {
     flex-direction: column;
+    margin: 6rem 0;
   }
 }
 
@@ -31,7 +32,7 @@
 }
 
 .info-wrapper {
-  color: black;
+  color: var(--color-dark);
   width: 28rem;
   height: 28rem;
   margin: 1rem;

@@ -2,15 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './Header.module.scss';
+import logo from '../../img/logo-small.png';
+import searchIcon from '../../img/icons/fa-search.png';
+import avatar from '../../img/avatar.png';
+import signOut from '../../img/icons/fa-sign-out.png';
 
 function Header() {
   return (
     <header styleName='header'>
       <Link to='/'>
-        <img styleName='logo' src='img/logo-small-min.png' alt='Small logo.' />
+        <img styleName='logo' src={logo} alt='Small logo.' />
       </Link>
       <div styleName='search'>
-        <img styleName='icon' src='img/icons/fa-search.png' alt='Search icon' />
+        <img styleName='icon' src={searchIcon} alt='Search icon' />
         <input
           styleName='input'
           type='text'
@@ -19,15 +23,11 @@ function Header() {
       </div>
       <div styleName='userblock'>
         <div styleName='profile'>
-          <img styleName='avatar' src='img/avatar-min.png' alt='User avatar' />
+          <img styleName='avatar' src={avatar} alt='User avatar' />
           <div styleName='name'>Kim Evans</div>
         </div>
         <Link styleName='sign-out' to='/login'>
-          <img
-            src='img/icons/fa-sign-out.png'
-            title='Sign Out'
-            alt='Sign Out.'
-          />
+          <img src={signOut} title='Sign Out' alt='Sign Out.' />
         </Link>
         <div styleName='sub-menu'>
           <button styleName='sub-action'>Add new post</button>

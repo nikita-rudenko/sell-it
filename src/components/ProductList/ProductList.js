@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
-import ProductItem from '../ProductItem/ProductItem';
-import Footer from '../Footer/Footer';
 import styles from './ProductList.module.scss';
 import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../../actions/ProductActions';
+import Header from '../Header/Header';
+import ProductItem from '../ProductItem/ProductItem';
+import Footer from '../Footer/Footer';
 import Loading from '../Loading/Loading';
 
 class ProductList extends Component {
