@@ -5,7 +5,8 @@ import CSSModules from 'react-css-modules';
 function Loading() {
   return (
     <div styleName='container'>
-      <div styleName='loading'>Loading...</div>
+      <img src='img/gif/loading.gif' alt='Loading...' />
+      <div styleName='loading'>Loading</div>
     </div>
   );
 }

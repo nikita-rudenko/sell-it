@@ -19,19 +19,23 @@ class ProductList extends Component {
         return <ProductItem key={item.pk} item={item} />;
       })
     ) : (
-      <Loading />
+      <div>"An error occured"</div>
     );
   };
 
   render() {
-    const { productList } = this.props;
+    const { productList, isFetching } = this.props;
     const data = productList.data;
 
     return (
       <>
         <Header />
         <main>
-          <section styleName='product-list'>{this.mapProducts(data)}</section>
+          {isFetching ? (
+            <Loading />
+          ) : (
+            <section styleName='product-list'>{this.mapProducts(data)}</section>
+          )}
         </main>
         <Footer />
       </>
@@ -40,7 +44,8 @@ class ProductList extends Component {
 }
 
 const mapStateToProps = state => ({
-  productList: state.productList
+  productList: state.productList,
+  isFetching: state.isFetching
 });
 
 const mapDispatchToProps = dispatch => ({
