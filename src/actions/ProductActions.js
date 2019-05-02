@@ -12,7 +12,10 @@ export const fetchProducts = () => dispatch => {
   axios.get('http://light-it-04.tk/api/posters/').then(res => {
     dispatch({
       type: FETCH_PRODUCTS_SUCCESS,
-      payload: res.data
+      payload: res.data,
+      meta: {
+        printLog: true
+      }
     });
   });
 };
