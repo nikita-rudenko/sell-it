@@ -6,7 +6,9 @@ import styles from './Header.module.scss';
 function Header() {
   return (
     <header styleName='header'>
-      <img styleName='logo' src='img/logo-small-min.png' alt='Small logo.' />
+      <Link to='/'>
+        <img styleName='logo' src='img/logo-small-min.png' alt='Small logo.' />
+      </Link>
       <div styleName='search'>
         <img styleName='icon' src='img/icons/fa-search.png' alt='Search icon' />
         <input
