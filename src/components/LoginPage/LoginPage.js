@@ -1,28 +1,30 @@
-import React from 'react';
-import Form from '../Form/Form';
+import React, { Component } from 'react';
+
+import FormComp from '../Form/ReduxForm';
 import CSSModules from 'react-css-modules';
 import styles from './LoginPage.module.scss';
 import logo from '../../img/logo-big.png';
 
-function LoginPage() {
-  return (
-    <>
-      <div styleName='login-page'>
-        <div styleName='background' />
+class LoginPage extends Component {
+  submit = values => {
+    console.log(values);
+  };
 
-        <div styleName='sidebar'>
+  render() {
+    return (
+      <div styleName="login-page">
+        <div styleName="background" />
+
+        <div styleName="sidebar">
           <div>
-            <img src={logo} alt='Big logo.' />
+            <img src={logo} alt="Big logo." />
           </div>
 
-          <Form />
+          <FormComp onSubmit={this.submit} />
         </div>
       </div>
-      {/* <footer className="footer">
-					<span>2017 - front-end labs Light IT</span>
-				</footer> */}
-    </>
-  );
+    );
+  }
 }
 
 export default CSSModules(LoginPage, styles, { allowMultiple: true });
