@@ -14,9 +14,6 @@ class ProductDetails extends Component {
     const {
       match: { params }
     } = this.props;
-
-    console.log(params.productId);
-
     this.props.getDetails(params.productId);
   }
 
