@@ -11,11 +11,13 @@ import defaultImg from '../../assets/img/default.jpg';
 
 class ProductDetails extends Component {
   componentDidMount() {
-    const { productID, isFetching } = this.props;
+    const {
+      match: { params }
+    } = this.props;
 
-    if (productID && !isFetching) {
-      this.props.getDetails(productID);
-    }
+    console.log(params.productId);
+
+    this.props.getDetails(params.productId);
   }
 
   render() {
@@ -78,7 +80,6 @@ class ProductDetails extends Component {
 }
 
 const mapStateToProps = state => ({
-  productID: state.productID,
   details: state.details,
   isFetching: state.isFetching
 });
