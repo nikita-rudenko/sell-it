@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './Header.module.scss';
-import logo from '../../img/logo-small.png';
-import searchIcon from '../../img/icons/fa-search.png';
-import avatar from '../../img/avatar.png';
-import signOut from '../../img/icons/fa-sign-out.png';
+import logo from '../../assets/img/logo-small.png';
+import searchIcon from '../../assets/img/icons/fa-search.png';
+import avatar from '../../assets/img/avatar.png';
+import signOut from '../../assets/img/icons/fa-sign-out.png';
 
 function Header() {
   return (

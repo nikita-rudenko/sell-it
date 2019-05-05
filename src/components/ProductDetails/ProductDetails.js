@@ -7,7 +7,7 @@ import { getDetails } from '../../actions/ProductActions';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Loading from '../Loading/Loading';
-import defaultImg from '../../img/default.jpg';
+import defaultImg from '../../assets/img/default.jpg';
 
 class ProductDetails extends Component {
   componentDidMount() {

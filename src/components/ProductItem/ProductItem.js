@@ -4,8 +4,8 @@ import CSSModules from 'react-css-modules';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setProductID } from '../../actions/ProductActions';
-import defImg from '../../img/default.jpg';
-import eye from '../../img/icons/fa-eye.png';
+import defImg from '../../assets/img/default.jpg';
+import eye from '../../assets/img/icons/fa-eye.png';
 
 class ProductItem extends Component {
   setProductDetailsID(id) {
