@@ -19,7 +19,7 @@ export function* fetchProducts() {
     const result = yield call(axios.get, 'http://light-it-04.tk/api/posters/');
     yield put({
       type: FETCH_PRODUCTS_SUCCESS,
-      payload: result.data,
+      payload: result.data.data,
       meta: {
         printLog: true
       }
@@ -41,8 +41,8 @@ export function* watchGetDetails() {
 
 export function* getDetails(action) {
   try {
-    const { id } = action;
-    const link = 'http://light-it-04.tk/api/posters/' + id;
+    const { payload } = action;
+    const link = 'http://light-it-04.tk/api/posters/' + payload;
     const result = yield call(axios.get, link);
     yield put({
       type: GET_DETAILS_SUCCESS,

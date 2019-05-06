@@ -25,7 +25,7 @@ class ProductList extends Component {
 
   render() {
     const { productList, isFetching } = this.props;
-    const data = productList.data;
+    const data = productList;
 
     return (
       <>
@@ -43,10 +43,20 @@ class ProductList extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  productList: state.product.productList,
-  isFetching: state.product.isFetching
-});
+const mapStateToProps = state => {
+  const { searchQuery, isFetching } = state.product;
+  let { productList } = state.product;
+
+  if (searchQuery) {
+    productList = productList.filter(product =>
+      product.theme.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }
+  return {
+    productList,
+    isFetching
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchProducts: () => dispatch(fetchProducts())

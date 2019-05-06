@@ -4,12 +4,14 @@ import {
   GET_DETAILS_REQUEST,
   GET_DETAILS_SUCCESS,
   FETCH_PRODUCTS_FAILURE,
-  GET_DETAILS_FAILURE
+  GET_DETAILS_FAILURE,
+  SEARCH_PRODUCTS
 } from '../actions/productActions';
 
 const initialState = {
   isFetching: false,
-  productList: [],
+  productList: null,
+  searchQuery: null,
   details: null,
   error: null
 };
@@ -33,6 +35,9 @@ export default function(state = initialState, action) {
 
     case GET_DETAILS_FAILURE:
       return { ...state, error: action.payload };
+
+    case SEARCH_PRODUCTS:
+      return { ...state, searchQuery: action.payload };
 
     default:
       return state;
