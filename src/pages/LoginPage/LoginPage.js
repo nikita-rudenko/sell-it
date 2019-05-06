@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-
-import FormComp from '../Form/ReduxForm';
+import Form from '../../components/Form/Form';
 import CSSModules from 'react-css-modules';
 import styles from './LoginPage.module.scss';
 import logo from '../../assets/img/logo-big.png';
 
 class LoginPage extends Component {
-  submit = values => {
-    console.log(values);
-  };
-
   render() {
     return (
       <div styleName='login-page'>
@@ -19,8 +14,7 @@ class LoginPage extends Component {
           <div>
             <img src={logo} alt='Big logo.' />
           </div>
-
-          <FormComp onSubmit={this.submit} />
+          <Form />
         </div>
       </div>
     );

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import styles from './ProductList.module.scss';
 import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
-import { fetchProducts } from '../../actions/ProductActions';
-import Header from '../Header/Header';
-import ProductItem from '../ProductItem/ProductItem';
-import Footer from '../Footer/Footer';
-import Loading from '../Loading/Loading';
+import { fetchProducts } from '../../actions/productActions';
+import Header from '../../components/Header/Header';
+import ProductItem from '../../components/ProductItem/ProductItem';
+import Footer from '../../components/Footer/Footer';
+import Loading from '../../components/Loading/Loading';
 
 class ProductList extends Component {
   componentDidMount() {
@@ -44,8 +44,8 @@ class ProductList extends Component {
 }
 
 const mapStateToProps = state => ({
-  productList: state.productList,
-  isFetching: state.isFetching
+  productList: state.product.productList,
+  isFetching: state.product.isFetching
 });
 
 const mapDispatchToProps = dispatch => ({

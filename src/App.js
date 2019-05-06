@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './sass/main.scss';
-import LoginPage from './components/LoginPage/LoginPage';
-import ProductList from './components/ProductList/ProductList';
-import ProductDetails from './components/ProductDetails/ProductDetails';
+import LoginPage from './pages/LoginPage/LoginPage';
+import ProductList from './pages/ProductList/ProductList';
+import ProductDetails from './pages/ProductDetails/ProductDetails';
+import Default from './pages/Default/Default';
 import { Switch, Route } from 'react-router-dom';
-import Default from './components/Default/Default';
 
 class App extends Component {
   render() {

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './Form.module.scss';
+import SignIn from './SignIn/SignIn';
+import SignUp from './SignUp/SignUp';
+import { signIn, signUp } from '../../actions/authActions';
+import { connect } from 'react-redux';
 
 class Form extends Component {
   constructor(props) {
@@ -20,9 +23,18 @@ class Form extends Component {
     });
   };
 
+  submit = values => {
+    if (this.state.showSignIn) {
+      this.props.signIn(values);
+    } else {
+      this.props.signUp(values);
+    }
+  };
+
   render() {
     const { showSignIn } = this.state;
 
+    // button styles
     const btnSignIn = `btn btn-small ${showSignIn ? 'btn-active' : ''}`;
     const btnSignUp = `btn btn-small ${showSignIn ? '' : 'btn-active'}`;
 
@@ -45,31 +57,27 @@ class Form extends Component {
           </button>
         </div>
         <div>
-          <form styleName='body' action='#'>
-            <div>
-              <input
-                styleName='input'
-                id='email'
-                type='email'
-                placeholder='Email'
-                required
-              />
-              <input
-                styleName='input'
-                id='password'
-                type='password'
-                placeholder='Password'
-                required
-              />
-            </div>
-            <Link styleName='btn btn-big' to='/'>
-              {showSignIn ? 'Login' : 'Register'}
-            </Link>
-          </form>
+          {showSignIn ? (
+            <SignIn onSubmit={this.submit} />
+          ) : (
+            <SignUp onSubmit={this.submit} />
+          )}
         </div>
       </div>
     );
   }
 }
 
-export default CSSModules(Form, styles, { allowMultiple: true });
+const mapStateToProps = state => ({
+  isFetching: state.isFetching
+});
+
+const mapDispatchToProps = dispatch => ({
+  signIn: userData => dispatch(signIn(userData)),
+  signUp: userData => dispatch(signUp(userData))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CSSModules(Form, styles, { allowMultiple: true }));

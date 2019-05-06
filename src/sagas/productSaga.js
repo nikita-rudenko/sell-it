@@ -5,9 +5,10 @@ import {
   GET_DETAILS_REQUEST,
   GET_DETAILS_SUCCESS,
   GET_DETAILS_FAILURE
-} from '../actions/ProductActions';
+} from '../actions/productActions';
+
 import axios from 'axios';
-import { put, takeEvery, call, all } from 'redux-saga/effects';
+import { put, takeEvery, call } from 'redux-saga/effects';
 
 export function* watchFetchProducts() {
   yield takeEvery(FETCH_PRODUCTS_REQUEST, fetchProducts);
@@ -53,8 +54,4 @@ export function* getDetails(action) {
       payload: error
     });
   }
-}
-
-export default function* rootSaga() {
-  yield all([watchFetchProducts(), watchGetDetails()]);
 }

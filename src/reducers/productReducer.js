@@ -5,7 +5,7 @@ import {
   GET_DETAILS_SUCCESS,
   FETCH_PRODUCTS_FAILURE,
   GET_DETAILS_FAILURE
-} from '../actions/ProductActions';
+} from '../actions/productActions';
 
 const initialState = {
   isFetching: false,
