@@ -4,7 +4,7 @@ import { Field } from 'redux-form';
 import styles from '../shared/Sign.module.scss';
 import { hint, validator } from '../shared/validation';
 
-let SignUp = ({ handleSubmit, pristine, submitting, valid }) => (
+let SignUp = ({ handleSubmit, submitting }) => (
   <form className={styles.body} onSubmit={handleSubmit}>
     <div>
       <Field
@@ -38,11 +38,7 @@ let SignUp = ({ handleSubmit, pristine, submitting, valid }) => (
         placeholder='Password'
       />
     </div>
-    <button
-      className={styles.submit}
-      type='submit'
-      disabled={!valid || pristine || submitting}
-    >
+    <button className={styles.submit} type='submit' disabled={submitting}>
       Sign In
     </button>
   </form>
