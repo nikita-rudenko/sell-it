@@ -116,6 +116,9 @@
 }
 
 .sub-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1 1 50%;
   font-size: 1.4rem;
   color: #fff;
@@ -124,4 +127,5 @@
   background-color: var(--color-primary);
   border: none;
   border-left: 3px solid #000;
+  text-decoration: none;
 }
