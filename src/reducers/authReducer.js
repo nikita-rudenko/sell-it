@@ -5,6 +5,7 @@ import {
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE
+  // signInActions
 } from '../actions/authActions';
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    // case signInActions.request:
     case SIGN_IN_REQUEST:
       return { ...state, isFetching: true };
 

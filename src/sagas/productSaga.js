@@ -8,6 +8,7 @@ import {
 } from '../actions/productActions';
 
 import axios from 'axios';
+import { getFetchProducts } from '../api-client/products';
 import { put, takeEvery, call } from 'redux-saga/effects';
 
 export function* watchFetchProducts() {
@@ -16,7 +17,7 @@ export function* watchFetchProducts() {
 
 export function* fetchProducts() {
   try {
-    const result = yield call(axios.get, 'http://light-it-04.tk/api/posters/');
+    const result = yield call(getFetchProducts);
     yield put({
       type: FETCH_PRODUCTS_SUCCESS,
       payload: result.data.data,
