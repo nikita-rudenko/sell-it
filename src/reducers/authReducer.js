@@ -11,6 +11,7 @@ import {
 const initialState = {
   isFetching: false,
   userData: [],
+  isAuthenticated: false,
   error: null
 };
 
@@ -34,6 +35,9 @@ export default function(state = initialState, action) {
 
     case SIGN_UP_FAILURE:
       return { ...state, error: action.payload };
+
+    case AUTH_SUCCESS:
+      return { ...state, isAuthenticated: true, isFetching: false };
 
     default:
       return state;
