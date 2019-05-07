@@ -5,7 +5,7 @@ import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
   product: productReducer,
-  auth: formReducer,
+  form: formReducer,
   profile: profileReducer
 });
 
