@@ -36,7 +36,7 @@ class Header extends Component {
             <img styleName='avatar' src={avatar} alt='User avatar' />
             <div styleName='name'>Kim Evans</div>
           </div>
-          <Link styleName='sign-out' to='/login'>
+          <Link styleName='sign-out' to='/sign-in'>
             <img src={signOut} title='Sign Out' alt='Sign Out.' />
           </Link>
           <div styleName='sub-menu'>
