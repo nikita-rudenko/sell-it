@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import { getDetails } from 'actions/productActions';
 
@@ -86,6 +88,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getDetails: id => dispatch(getDetails(id))
 });
+
+ProductDetails.propTypes = {
+  details: PropTypes.object,
+  isFetching: PropTypes.bool,
+  getDetails: PropTypes.func
+};
 
 export default connect(
   mapStateToProps,

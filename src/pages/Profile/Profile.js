@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { fetchProfileData } from 'actions/profileActions';
 
@@ -48,6 +50,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   fetchProfileData: () => dispatch(fetchProfileData())
 });
+
+Profile.propTypes = {
+  fetchProfileData: PropTypes.func
+};
 
 export default connect(
   mapStateToProps,

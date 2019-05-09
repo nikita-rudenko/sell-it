@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { searchProducts } from 'actions/productActions';
@@ -57,6 +59,10 @@ class Header extends Component {
 const mapDispatchToProps = dispatch => ({
   searchProducts: query => dispatch(searchProducts(query))
 });
+
+Header.propTypes = {
+  searchProducts: PropTypes.func
+};
 
 export default connect(
   null,

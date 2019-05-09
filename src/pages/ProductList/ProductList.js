@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { fetchProducts } from 'actions/productActions';
 
@@ -63,6 +65,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   fetchProducts: () => dispatch(fetchProducts())
 });
+
+ProductList.propTypes = {
+  productList: PropTypes.array,
+  isFetching: PropTypes.bool,
+  fetchProducts: PropTypes.func
+};
 
 export default connect(
   mapStateToProps,

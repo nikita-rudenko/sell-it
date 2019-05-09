@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 
 import styles from './ProductItem.module.scss';
@@ -23,6 +25,10 @@ const ProductItem = props => {
       </div>
     </Link>
   );
+};
+
+ProductItem.propTypes = {
+  item: PropTypes.object
 };
 
 export default CSSModules(ProductItem, styles);

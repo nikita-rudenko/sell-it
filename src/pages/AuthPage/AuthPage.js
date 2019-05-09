@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { signIn, signUp } from 'actions/authActions';
 
 import CSSModules from 'react-css-modules';
@@ -11,7 +12,7 @@ import SignIn from 'components/SignIn/SignIn';
 import SignUp from 'components/SignUp/SignUp';
 import Loading from 'components/Loading/Loading';
 
-class LoginPage extends Component {
+class AuthPage extends Component {
   // send data from according form (path)
   submit = values => {
     if (this.props.match.path === '/sign-in') {
@@ -24,10 +25,8 @@ class LoginPage extends Component {
   // render form according to current path
   renderForm = () => {
     const { path } = this.props.match;
-
     const styleSignInTab = path === '/sign-in' ? 'tab tab-active' : 'tab';
     const styleSignUpTab = path === '/sign-up' ? 'tab tab-active' : 'tab';
-
     const formToRender =
       path === '/sign-in' ? (
         <SignIn onSubmit={this.submit} />
@@ -54,7 +53,7 @@ class LoginPage extends Component {
     const { isFetching } = this.props;
 
     return (
-      <div styleName='login-page'>
+      <div styleName='auth-page'>
         <div styleName='background' />
 
         <div styleName='sidebar'>
@@ -77,7 +76,13 @@ const mapDispatchToProps = dispatch => ({
   signUp: userData => dispatch(signUp(userData))
 });
 
+AuthPage.propTypes = {
+  isFetching: PropTypes.bool,
+  signIn: PropTypes.func,
+  signUp: PropTypes.func
+};
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CSSModules(LoginPage, styles, { allowMultiple: true }));
+)(CSSModules(AuthPage, styles, { allowMultiple: true }));
