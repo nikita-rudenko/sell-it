@@ -30,7 +30,12 @@ export default function(state = initialState, action) {
       };
 
     case SIGN_IN_FAILURE:
-      return { ...state, error: action.payload };
+      return {
+        ...state,
+        error: action.payload,
+        isAuthenticated: false,
+        isFetching: false
+      };
 
     case SIGN_UP_REQUEST:
       return { ...state, isFetching: true };

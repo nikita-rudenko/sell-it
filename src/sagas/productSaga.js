@@ -7,8 +7,7 @@ import {
   GET_DETAILS_FAILURE
 } from '../actions/productActions';
 
-import axios from 'axios';
-import { getFetchProducts } from '../api-client/products';
+import { getFetchProducts, getFetchDetails } from '../api-client/products';
 import { put, takeEvery, call } from 'redux-saga/effects';
 
 export function* watchFetchProducts() {
@@ -20,10 +19,7 @@ export function* fetchProducts() {
     const result = yield call(getFetchProducts);
     yield put({
       type: FETCH_PRODUCTS_SUCCESS,
-      payload: result.data.data,
-      meta: {
-        printLog: true
-      }
+      payload: result.data.data
     });
   } catch (error) {
     yield put({
@@ -43,8 +39,7 @@ export function* watchGetDetails() {
 export function* getDetails(action) {
   try {
     const { payload } = action;
-    const link = 'http://light-it-04.tk/api/posters/' + payload;
-    const result = yield call(axios.get, link);
+    const result = yield call(getFetchDetails, payload);
     yield put({
       type: GET_DETAILS_SUCCESS,
       payload: result.data
