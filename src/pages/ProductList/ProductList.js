@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchProducts } from 'actions/productActions';
+
 import styles from './ProductList.module.scss';
 import CSSModules from 'react-css-modules';
-import { connect } from 'react-redux';
-import { fetchProducts } from '../../actions/productActions';
-import Header from '../../components/Header/Header';
-import ProductItem from '../../components/ProductItem/ProductItem';
-import Footer from '../../components/Footer/Footer';
-import Loading from '../../components/Loading/Loading';
+
+import Header from 'components/Header/Header';
+import ProductItem from 'components/ProductItem/ProductItem';
+import Footer from 'components/Footer/Footer';
+import Loading from 'components/Loading/Loading';
 
 class ProductList extends Component {
   componentDidMount() {

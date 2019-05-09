@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signIn, signUp } from 'actions/authActions';
+
 import CSSModules from 'react-css-modules';
 import styles from './AuthPage.module.scss';
-import logo from '../../assets/img/logo-big.png';
-import { connect } from 'react-redux';
-import { signIn, signUp } from '../../actions/authActions';
-import { Link } from 'react-router-dom';
-import SignIn from '../../components/Form/SignIn';
-import SignUp from '../../components/Form/SignUp';
-import Loading from '../../components/Loading/Loading';
+import logo from 'assets/img/logo-big.png';
+
+import SignIn from 'components/SignIn/SignIn';
+import SignUp from 'components/SignUp/SignUp';
+import Loading from 'components/Loading/Loading';
 
 class LoginPage extends Component {
+  // send data from according form (path)
   submit = values => {
     if (this.props.match.path === '/sign-in') {
       this.props.signIn(values);
@@ -18,6 +21,7 @@ class LoginPage extends Component {
     }
   };
 
+  // render form according to current path
   renderForm = () => {
     const { path } = this.props.match;
 

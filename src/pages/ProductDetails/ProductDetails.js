@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import styles from './ProductDetails.module.scss';
-import CSSModules from 'react-css-modules';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getDetails } from '../../actions/productActions';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import Loading from '../../components/Loading/Loading';
-import defaultImg from '../../assets/img/default.jpg';
+import { getDetails } from 'actions/productActions';
+
+import styles from './ProductDetails.module.scss';
+import CSSModules from 'react-css-modules';
+import defaultImg from 'assets/img/default.jpg';
+
+import Header from 'components/Header/Header';
+import Footer from 'components/Footer/Footer';
+import Loading from 'components/Loading/Loading';
 
 class ProductDetails extends Component {
   componentDidMount() {

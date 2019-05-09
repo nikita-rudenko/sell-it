@@ -4,7 +4,6 @@ import {
   FETCH_PROFILE_DATA_FAILURE
 } from '../actions/profileActions';
 
-// import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
 export function* watchFetchProfileData() {

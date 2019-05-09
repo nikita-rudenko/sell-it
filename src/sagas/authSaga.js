@@ -8,7 +8,7 @@ import {
   // signInActions
 } from '../actions/authActions';
 import { takeEvery, call, put } from 'redux-saga/effects';
-import { postSignIn } from '../api-client/auth';
+import { postSignIn } from 'api-client/auth';
 
 export function* watchSignIn() {
   // yield takeEvery(signInActions.request, signIn);

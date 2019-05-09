@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { searchProducts } from 'actions/productActions';
+
 import CSSModules from 'react-css-modules';
 import styles from './Header.module.scss';
-import logo from '../../assets/img/logo-small.png';
-import searchIcon from '../../assets/img/icons/fa-search.png';
-import avatar from '../../assets/img/avatar.png';
-import signOut from '../../assets/img/icons/fa-sign-out.png';
-import { searchProducts } from '../../actions/productActions';
+import logo from 'assets/img/logo-small.png';
+import searchIcon from 'assets/img/icons/fa-search.png';
+import avatar from 'assets/img/avatar.png';
+import signOut from 'assets/img/icons/fa-sign-out.png';
 
 class Header extends Component {
   handleSearch = e => {

@@ -1,9 +1,33 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import { Field } from 'redux-form';
-import styles from '../shared/Sign.module.scss';
-import { FormField } from '../shared/FormField';
-import { validate } from '../../../utils/validate';
+import { validate } from '../../utils/validate';
+
+import styles from './SignUp.module.scss';
+
+const FormField = ({
+  input,
+  type,
+  placeholder,
+  id,
+  autocomplete,
+  meta: { touched, error },
+  ...rest
+}) => {
+  return (
+    <>
+      <input
+        className={styles.input}
+        autoComplete={autocomplete}
+        {...input}
+        placeholder={placeholder}
+        type={type}
+        id={id}
+      />
+      {touched && error && <p className={styles.hint}>{error}</p>}
+    </>
+  );
+};
 
 let SignUp = ({ handleSubmit, submitting }) => (
   <form className={styles.body} onSubmit={handleSubmit}>

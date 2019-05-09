@@ -7,7 +7,7 @@ import {
   GET_DETAILS_FAILURE
 } from '../actions/productActions';
 
-import { getFetchProducts, getFetchDetails } from '../api-client/products';
+import { getFetchProducts, getFetchDetails } from 'api-client/products';
 import { put, takeEvery, call } from 'redux-saga/effects';
 
 export function* watchFetchProducts() {

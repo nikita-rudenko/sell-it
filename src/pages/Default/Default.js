@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import CSSModules from 'react-css-modules';
 import styles from './Default.module.scss';
 
-function Default({ location }) {
+const Default = ({ location }) => {
   return (
     <div styleName='container'>
       <h1 styleName='error'>Error 404</h1>
@@ -15,6 +16,6 @@ function Default({ location }) {
       </Link>
     </div>
   );
-}
+};
 
 export default CSSModules(Default, styles);
