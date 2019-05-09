@@ -10,7 +10,7 @@ import {
 
 const initialState = {
   isFetching: false,
-  userData: [],
+  userData: null,
   isAuthenticated: false,
   error: null
 };
@@ -22,7 +22,12 @@ export default function(state = initialState, action) {
       return { ...state, isFetching: true };
 
     case SIGN_IN_SUCCESS:
-      return { ...state, userData: action.payload, isFetching: false };
+      return {
+        ...state,
+        userData: action.payload,
+        isAuthenticated: true,
+        isFetching: false
+      };
 
     case SIGN_IN_FAILURE:
       return { ...state, error: action.payload };
@@ -31,13 +36,10 @@ export default function(state = initialState, action) {
       return { ...state, isFetching: true };
 
     case SIGN_UP_SUCCESS:
-      return { ...state, details: action.payload, isFetching: false };
+      return { ...state, isFetching: false };
 
     case SIGN_UP_FAILURE:
       return { ...state, error: action.payload };
-
-    case AUTH_SUCCESS:
-      return { ...state, isAuthenticated: true, isFetching: false };
 
     default:
       return state;

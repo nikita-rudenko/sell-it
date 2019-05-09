@@ -16,3 +16,11 @@ export const get = path => {
     url: path
   });
 };
+
+export const post = (path, data) => {
+  return request({
+    method: 'POST',
+    url: path,
+    data
+  });
+};

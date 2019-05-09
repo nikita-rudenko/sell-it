@@ -2,13 +2,16 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 import { Field } from 'redux-form';
 import styles from '../shared/Sign.module.scss';
-import { hint, validator } from '../shared/validation';
+import { FormField } from '../shared/FormField';
+import { validate } from '../../../utils/validate';
 
 let SignIn = ({ handleSubmit, submitting }) => (
   <form className={styles.body} onSubmit={handleSubmit}>
     <div>
       <Field
-        component={hint}
+        className={styles.input}
+        autocomplete='username'
+        component={FormField}
         name='email'
         id='email'
         type='email'
@@ -16,7 +19,8 @@ let SignIn = ({ handleSubmit, submitting }) => (
       />
       <Field
         className={styles.input}
-        component={hint}
+        autocomplete='current-password'
+        component={FormField}
         name='password'
         id='password'
         type='password'
@@ -31,7 +35,7 @@ let SignIn = ({ handleSubmit, submitting }) => (
 
 SignIn = reduxForm({
   form: 'sign-in',
-  validate: validator
+  validate
 })(SignIn);
 
 export default SignIn;

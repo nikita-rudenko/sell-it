@@ -2,28 +2,23 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 import { Field } from 'redux-form';
 import styles from '../shared/Sign.module.scss';
-import { hint, validator } from '../shared/validation';
+import { FormField } from '../shared/FormField';
+import { validate } from '../../../utils/validate';
 
 let SignUp = ({ handleSubmit, submitting }) => (
   <form className={styles.body} onSubmit={handleSubmit}>
     <div>
       <Field
-        component={hint}
-        name='firstName'
-        id='firstName'
+        component={FormField}
+        autocomplete='username'
+        name='username'
+        id='username'
         type='text'
-        placeholder='First Name'
+        placeholder='Username'
       />
       <Field
-        component={hint}
-        name='lastName'
-        id='lastName'
-        type='text'
-        placeholder='Last Name'
-      />
-
-      <Field
-        component={hint}
+        component={FormField}
+        autocomplete='email'
         name='email'
         id='email'
         type='email'
@@ -31,22 +26,32 @@ let SignUp = ({ handleSubmit, submitting }) => (
       />
       <Field
         className={styles.input}
-        component={hint}
-        name='password'
-        id='password'
+        autocomplete='new-password'
+        component={FormField}
+        name='password1'
+        id='password1'
         type='password'
         placeholder='Password'
       />
+      <Field
+        className={styles.input}
+        autocomplete='new-password'
+        component={FormField}
+        name='password2'
+        id='password2'
+        type='password'
+        placeholder='Confirm password'
+      />
     </div>
     <button className={styles.submit} type='submit' disabled={submitting}>
-      Sign In
+      Sign Up
     </button>
   </form>
 );
 
 SignUp = reduxForm({
   form: 'sign-up',
-  validate: validator
+  validate
 })(SignUp);
 
 export default SignUp;

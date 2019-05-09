@@ -1,15 +1,14 @@
 import {
   SIGN_IN_REQUEST,
-  // SIGN_IN_SUCCESS,
-  // SIGN_IN_FAILURE,
-  SIGN_UP_REQUEST,
-  AUTH_SUCCESS
+  SIGN_IN_SUCCESS,
+  SIGN_IN_FAILURE,
+  SIGN_UP_REQUEST
   // SIGN_UP_SUCCESS,
   // SIGN_UP_FAILURE
   // signInActions
 } from '../actions/authActions';
-import axios from 'axios';
 import { takeEvery, call, put } from 'redux-saga/effects';
+import { postSignIn } from '../api-client/auth';
 
 export function* watchSignIn() {
   // yield takeEvery(signInActions.request, signIn);
@@ -17,14 +16,13 @@ export function* watchSignIn() {
 }
 
 export function* signIn(action) {
-  const res = call(
-    axios.post,
-    'http://light-it-04.tk/api/login/',
-    action.payload
-  );
-  console.log(res.token);
-  localStorage.setItem('token', res.token);
-  yield put({ type: AUTH_SUCCESS });
+  try {
+    const res = yield call(postSignIn, action.payload);
+    yield localStorage.setItem('token', res.data.token);
+    yield put({ type: SIGN_IN_SUCCESS, payload: res.data.user });
+  } catch (error) {
+    yield put({ type: SIGN_IN_FAILURE, payload: error });
+  }
 }
 
 export function* watchSignUp() {

@@ -10,7 +10,7 @@ import { logger } from './middlewares/logger';
 import reducer from './reducers/rootReducer';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas/rootSaga';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import httpService from './api-client/interceptors';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -20,7 +20,7 @@ export const store = createStore(
   composeWithDevTools(applyMiddleware(sagaMiddleware, logger))
 );
 
-const history = createHistory();
+const history = createBrowserHistory();
 httpService.setupInterceptors(store, history);
 
 sagaMiddleware.run(rootSaga);
