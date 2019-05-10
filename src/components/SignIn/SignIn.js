@@ -11,8 +11,7 @@ const FormField = ({
   placeholder,
   id,
   autocomplete,
-  meta: { touched, error },
-  ...rest
+  meta: { touched, error }
 }) => {
   return (
     <>
@@ -29,7 +28,7 @@ const FormField = ({
   );
 };
 
-let SignIn = ({ handleSubmit, submitting }) => (
+let SignIn = ({ handleSubmit, valid, submitting, errorMessage }) => (
   <form className={styles.body} onSubmit={handleSubmit}>
     <div>
       <Field
@@ -51,7 +50,16 @@ let SignIn = ({ handleSubmit, submitting }) => (
         placeholder='Password'
       />
     </div>
-    <button className={styles.submit} type='submit' disabled={submitting}>
+    {errorMessage ? (
+      <p className={styles.hint}>
+        Error! {errorMessage[Object.keys(errorMessage)[0]]}
+      </p>
+    ) : null}
+    <button
+      className={styles.submit}
+      type='submit'
+      disabled={!valid && submitting}
+    >
       Sign In
     </button>
   </form>

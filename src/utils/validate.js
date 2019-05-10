@@ -16,6 +16,16 @@ export const validate = values => {
   }
 
   // PASSWORD
+  if (!values.password) {
+    errors.password = 'Password is required';
+  } else if (values.password.length < 8) {
+    errors.password = 'Your password is too short!';
+  } else if (!passwordRegex.test(values.password)) {
+    errors.password =
+      'Your password must include at least one letter and one number';
+  }
+
+  // PASSWORD 1 (SIGN UP)
   if (!values.password1) {
     errors.password1 = 'Password is required';
   } else if (values.password1.length < 8) {
@@ -25,7 +35,7 @@ export const validate = values => {
       'Your password must include at least one letter and one number';
   }
 
-  // PASSWORD CONFIRMATION
+  // PASSWORD 1-2 CONFIRMATION (SIGN UP)
   if (!values.password2) {
     errors.password2 = 'Please, confirm your password';
   } else if (values.password1 !== values.password2) {

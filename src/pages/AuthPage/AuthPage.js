@@ -24,14 +24,18 @@ class AuthPage extends Component {
 
   // render form according to current path
   renderForm = () => {
-    const { path } = this.props.match;
+    const {
+      match: { path },
+      error
+    } = this.props;
+
     const styleSignInTab = path === '/sign-in' ? 'tab tab-active' : 'tab';
     const styleSignUpTab = path === '/sign-up' ? 'tab tab-active' : 'tab';
     const formToRender =
       path === '/sign-in' ? (
-        <SignIn onSubmit={this.submit} />
+        <SignIn onSubmit={this.submit} errorMessage={error} />
       ) : (
-        <SignUp onSubmit={this.submit} />
+        <SignUp onSubmit={this.submit} errorMessage={error} />
       );
 
     return (
@@ -68,7 +72,8 @@ class AuthPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  isFetching: state.form.isFetching
+  isFetching: state.form.isFetching,
+  error: state.auth.error
 });
 
 const mapDispatchToProps = dispatch => ({
