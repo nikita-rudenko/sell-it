@@ -2,34 +2,13 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 import { Field } from 'redux-form';
 import { validate } from '../../utils/validate';
+import FormField from './FormField';
 
 import styles from './SignUp.module.scss';
 
-const FormField = ({
-  input,
-  type,
-  placeholder,
-  id,
-  autocomplete,
-  meta: { touched, error }
-}) => {
-  return (
-    <>
-      <input
-        className={styles.input}
-        autoComplete={autocomplete}
-        {...input}
-        placeholder={placeholder}
-        type={type}
-        id={id}
-      />
-      {touched && error && <p className={styles.hint}>{error}</p>}
-    </>
-  );
-};
-
-let SignUp = ({ handleSubmit, submitting, errorMessage }) => (
+let SignUp = ({ handleSubmit, submitting, errorMessage, children }) => (
   <form className={styles.body} onSubmit={handleSubmit}>
+    {children}
     <div>
       <Field
         component={FormField}
@@ -66,14 +45,14 @@ let SignUp = ({ handleSubmit, submitting, errorMessage }) => (
         placeholder='Confirm password'
       />
     </div>
-    {errorMessage ? (
-      <p className={styles.hint}>
-        Error! {errorMessage[Object.keys(errorMessage)[0]]}
-      </p>
-    ) : null}
     <button className={styles.submit} type='submit' disabled={submitting}>
       Sign Up
     </button>
+    {errorMessage ? (
+      <p className={styles.error}>
+        Error! {errorMessage[Object.keys(errorMessage)[0]]}
+      </p>
+    ) : null}
   </form>
 );
 

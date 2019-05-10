@@ -4,7 +4,8 @@ import {
   SIGN_IN_FAILURE,
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
-  SIGN_UP_FAILURE
+  SIGN_UP_FAILURE,
+  RESET_AUTH_ERROR
   // signInActions
 } from '../actions/authActions';
 
@@ -56,6 +57,12 @@ export default function(state = initialState, action) {
         error: action.payload,
         isAuthenticated: false,
         isFetching: false
+      };
+
+    case RESET_AUTH_ERROR:
+      return {
+        ...state,
+        error: null
       };
 
     default:

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { signIn, signUp } from 'actions/authActions';
+import { signIn, signUp, resetError } from 'actions/authActions';
 
 import CSSModules from 'react-css-modules';
 import styles from './AuthPage.module.scss';
@@ -22,35 +22,66 @@ class AuthPage extends Component {
     }
   };
 
+  resetErrors = () => {
+    this.props.resetError();
+  };
+
+  componentWillUnmount() {
+    this.props.resetError();
+  }
+
   // render form according to current path
   renderForm = () => {
-    const {
-      match: { path },
-      error
-    } = this.props;
+    const path = this.props.match.path;
+    const error = this.props.error;
 
-    const styleSignInTab = path === '/sign-in' ? 'tab tab-active' : 'tab';
-    const styleSignUpTab = path === '/sign-up' ? 'tab tab-active' : 'tab';
     const formToRender =
+      // PATH ? SIGN IN : SIGN UP
       path === '/sign-in' ? (
-        <SignIn onSubmit={this.submit} errorMessage={error} />
+        <SignIn onSubmit={this.submit} errorMessage={error}>
+          <div styleName='tabs'>
+            <Link
+              to='/sign-in'
+              onClick={this.resetErrors}
+              name='sign-in'
+              styleName='tab tab-active'
+            >
+              <span>Sign In</span>
+            </Link>
+            <Link
+              to='/sign-up'
+              onClick={this.resetErrors}
+              name='sign-up'
+              styleName='tab'
+            >
+              <span>Sign Up</span>
+            </Link>
+          </div>
+        </SignIn>
       ) : (
-        <SignUp onSubmit={this.submit} errorMessage={error} />
+        <SignUp onSubmit={this.submit} errorMessage={error}>
+          <div styleName='tabs'>
+            <Link
+              to='/sign-in'
+              onClick={this.resetErrors}
+              name='sign-in'
+              styleName='tab'
+            >
+              <span>Sign In</span>
+            </Link>
+            <Link
+              to='/sign-up'
+              onClick={this.resetErrors}
+              name='sign-up'
+              styleName='tab tab-active'
+            >
+              <span>Sign Up</span>
+            </Link>
+          </div>
+        </SignUp>
       );
 
-    return (
-      <div>
-        <div styleName='tabs'>
-          <Link to='/sign-in' name='sign-in' styleName={styleSignInTab}>
-            <span>Sign In</span>
-          </Link>
-          <Link to='/sign-up' name='sign-up' styleName={styleSignUpTab}>
-            <span>Sign Up</span>
-          </Link>
-        </div>
-        <div>{formToRender}</div>
-      </div>
-    );
+    return formToRender;
   };
 
   render() {
@@ -78,13 +109,15 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   signIn: userData => dispatch(signIn(userData)),
-  signUp: userData => dispatch(signUp(userData))
+  signUp: userData => dispatch(signUp(userData)),
+  resetError: () => dispatch(resetError())
 });
 
 AuthPage.propTypes = {
   isFetching: PropTypes.bool,
   signIn: PropTypes.func,
-  signUp: PropTypes.func
+  signUp: PropTypes.func,
+  resetError: PropTypes.func
 };
 
 export default connect(

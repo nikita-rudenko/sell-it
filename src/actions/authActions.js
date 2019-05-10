@@ -8,6 +8,7 @@ export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE';
 export const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST';
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
+export const RESET_AUTH_ERROR = 'RESET_AUTH_ERROR';
 // export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 
 export const signIn = userData => ({
@@ -19,6 +20,8 @@ export const signUp = userData => ({
   type: SIGN_UP_REQUEST,
   payload: userData
 });
+
+export const resetError = () => ({ type: RESET_AUTH_ERROR });
 
 // const createAsyncActions = (prefix, name) => ({
 //   request: `${prefix}${name}_REQUEST`,
