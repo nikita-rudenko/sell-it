@@ -29,11 +29,7 @@ let SignIn = ({ handleSubmit, valid, submitting, errorMessage, children }) => (
         placeholder='Password'
       />
     </div>
-    <button
-      className={styles.submit}
-      type='submit'
-      disabled={!valid && submitting}
-    >
+    <button className={styles.submit} type='submit' disabled={submitting}>
       Sign In
     </button>
     {errorMessage ? (

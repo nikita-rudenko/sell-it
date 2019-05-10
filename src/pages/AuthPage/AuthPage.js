@@ -118,7 +118,7 @@ AuthPage.propTypes = {
   error: PropTypes.bool,
   signIn: PropTypes.func,
   signUp: PropTypes.func,
-  resetError: PropTypes.object
+  resetError: PropTypes.func
 };
 
 export default connect(

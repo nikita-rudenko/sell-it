@@ -4,17 +4,22 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { searchProducts } from 'actions/productActions';
+import { signOut } from 'actions/authActions';
 
 import CSSModules from 'react-css-modules';
 import styles from './Header.module.scss';
 import logo from 'assets/img/logo-small.png';
 import searchIcon from 'assets/img/icons/fa-search.png';
 import avatar from 'assets/img/avatar.png';
-import signOut from 'assets/img/icons/fa-sign-out.png';
+import iconSignOut from 'assets/img/icons/fa-sign-out.png';
 
 class Header extends Component {
   handleSearch = e => {
     this.props.searchProducts(e.target.value);
+  };
+
+  handleSignOut = () => {
+    this.props.signOut();
   };
 
   render() {
@@ -39,9 +44,9 @@ class Header extends Component {
             <img styleName='avatar' src={avatar} alt='User avatar' />
             <div styleName='name'>Kim Evans</div>
           </div>
-          <Link styleName='sign-out' to='/sign-in'>
-            <img src={signOut} title='Sign Out' alt='Sign Out.' />
-          </Link>
+          <div onClick={this.handleSignOut} styleName='sign-out' to='/sign-in'>
+            <img src={iconSignOut} title='Sign Out' alt='Sign Out.' />
+          </div>
           <div styleName='sub-menu'>
             <Link styleName='sub-action' to='/profile'>
               <span>Add new post</span>
@@ -56,8 +61,13 @@ class Header extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  userData: state.userData
+});
+
 const mapDispatchToProps = dispatch => ({
-  searchProducts: query => dispatch(searchProducts(query))
+  searchProducts: query => dispatch(searchProducts(query)),
+  signOut: () => dispatch(signOut())
 });
 
 Header.propTypes = {
@@ -65,6 +75,6 @@ Header.propTypes = {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(CSSModules(Header, styles));
