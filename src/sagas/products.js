@@ -8,7 +8,7 @@ import {
   SEARCH_PRODUCTS_REQUEST,
   SEARCH_PRODUCTS_SUCCESS,
   SEARCH_PRODUCTS_FAILURE
-} from '../actions/productActions';
+} from '../actions/products';
 
 import {
   getFetchProducts,
@@ -49,7 +49,7 @@ export function* getDetails(action) {
     const result = yield call(getFetchDetails, payload);
     yield put({
       type: GET_DETAILS_SUCCESS,
-      payload: result.data.data
+      payload: result.data
     });
   } catch (error) {
     yield put({
@@ -79,3 +79,9 @@ export function* searchProducts(action) {
     });
   }
 }
+
+export const productSagas = [
+  watchFetchProducts(),
+  watchGetDetails(),
+  watchSearchProducts()
+];

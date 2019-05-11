@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
-import styles from './ProductItem.module.scss';
 import CSSModules from 'react-css-modules';
+import styles from './ProductItem.module.scss';
 import defaultImg from 'assets/img/default.jpg';
 import eye from 'assets/img/icons/fa-eye.png';
 

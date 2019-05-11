@@ -5,13 +5,13 @@ export default function(ComposedComponent) {
   class RequireAuth extends Component {
     componentWillMount() {
       if (!this.props.isAuthenticated) {
-        this.props.history.push('/sign-in');
+        this.props.history.push('/signin');
       }
     }
 
     componentWillUpdate(nextProps) {
       if (!nextProps.isAuthenticated) {
-        this.props.history.push('/sign-in');
+        this.props.history.push('/signin');
       }
     }
 

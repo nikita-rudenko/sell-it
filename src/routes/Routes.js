@@ -10,10 +10,10 @@ import Default from 'pages/Default/Default';
 
 const Routes = () => (
   <Switch>
-    <Route exact path='/' component={ProductList} />
+    <Route exact path='/' component={RequireAuth(ProductList)} />
     <Route path='/details/:productId' component={RequireAuth(ProductDetails)} />
-    <Route exact path='/sign-in' component={AuthPage} />
-    <Route exact path='/sign-up' component={AuthPage} />
+    <Route exact path='/signin' component={AuthPage} />
+    <Route exact path='/signup' component={AuthPage} />
     <Route exact path='/profile' component={RequireAuth(Profile)} />
     <Route component={Default} />
   </Switch>

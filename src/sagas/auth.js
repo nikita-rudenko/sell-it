@@ -9,7 +9,7 @@ import {
   SIGN_OUT_SUCCESS,
   SIGN_OUT_FAILURE
   // signInActions
-} from '../actions/authActions';
+} from '../actions/auth';
 import { takeEvery, call, put } from 'redux-saga/effects';
 import { postSignIn, postSignUp, getSignOut } from 'api-client/auth';
 
@@ -55,3 +55,5 @@ export function* signOut() {
     yield put({ type: SIGN_OUT_FAILURE, payload: error.response.data });
   }
 }
+
+export const authSagas = [watchSignIn(), watchSignUp(), watchSignOut()];

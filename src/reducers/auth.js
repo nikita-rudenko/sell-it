@@ -10,7 +10,7 @@ import {
   SIGN_OUT_SUCCESS,
   SIGN_OUT_FAILURE
   // signInActions
-} from '../actions/authActions';
+} from '../actions/auth';
 
 const initialState = {
   isFetching: false,

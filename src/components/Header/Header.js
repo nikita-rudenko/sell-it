@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { searchProducts } from 'actions/productActions';
-import { signOut } from 'actions/authActions';
+import { searchProducts } from 'actions/products';
+import { signOut } from 'actions/auth';
 
 import CSSModules from 'react-css-modules';
 import styles from './Header.module.scss';
@@ -44,9 +44,9 @@ class Header extends Component {
             <img styleName='avatar' src={avatar} alt='User avatar' />
             <div styleName='name'>Kim Evans</div>
           </div>
-          <div onClick={this.handleSignOut} styleName='sign-out' to='/sign-in'>
+          <Link to='/signin' onClick={this.handleSignOut} styleName='sign-out'>
             <img src={iconSignOut} title='Sign Out' alt='Sign Out.' />
-          </div>
+          </Link>
           <div styleName='sub-menu'>
             <Link styleName='sub-action' to='/profile'>
               <span>Add new post</span>

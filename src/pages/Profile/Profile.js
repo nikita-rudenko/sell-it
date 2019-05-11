@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { fetchProfileData } from 'actions/profileActions';
+import { fetchProfileData } from 'actions/profile';
 
 import CSSModules from 'react-css-modules';
 import styles from './Profile.module.scss';

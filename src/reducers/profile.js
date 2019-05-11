@@ -2,7 +2,7 @@ import {
   FETCH_PROFILE_DATA_REQUEST,
   FETCH_PROFILE_DATA_SUCCESS,
   FETCH_PROFILE_DATA_FAILURE
-} from '../actions/profileActions';
+} from '../actions/profile';
 
 const initialState = {
   isFetching: false,

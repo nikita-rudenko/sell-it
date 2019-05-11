@@ -8,7 +8,7 @@ import {
   SEARCH_PRODUCTS_REQUEST,
   SEARCH_PRODUCTS_SUCCESS,
   SEARCH_PRODUCTS_FAILURE
-} from '../actions/productActions';
+} from '../actions/products';
 
 const initialState = {
   isFetching: false,
@@ -32,6 +32,8 @@ export default function(state = initialState, action) {
       return { ...state, isFetching: true };
 
     case GET_DETAILS_SUCCESS:
+      console.log(action.payload);
+
       return { ...state, details: action.payload, isFetching: false };
 
     case GET_DETAILS_FAILURE:

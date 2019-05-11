@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { fetchProducts } from 'actions/productActions';
+import { fetchProducts } from 'actions/products';
 
 import styles from './ProductList.module.scss';
 import CSSModules from 'react-css-modules';

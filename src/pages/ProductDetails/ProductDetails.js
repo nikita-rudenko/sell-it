@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { getDetails } from 'actions/productActions';
+import { getDetails } from 'actions/products';
 
 import styles from './ProductDetails.module.scss';
 import CSSModules from 'react-css-modules';

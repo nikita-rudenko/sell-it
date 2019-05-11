@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { signIn, signUp, resetError } from 'actions/authActions';
+import { signIn, signUp, resetError } from 'actions/auth';
 
 import CSSModules from 'react-css-modules';
 import styles from './AuthPage.module.scss';
@@ -13,9 +13,16 @@ import SignUp from 'components/SignUp/SignUp';
 import Loading from 'components/Loading/Loading';
 
 class AuthPage extends Component {
+  constructor(props) {
+    super(props);
+    if (props.isAuthenticated) {
+      props.history.push('/');
+    }
+  }
+
   // send data from according form (path)
   submit = values => {
-    if (this.props.match.path === '/sign-in') {
+    if (this.props.match.path === '/signin') {
       this.props.signIn(values);
     } else {
       this.props.signUp(values);
@@ -37,21 +44,21 @@ class AuthPage extends Component {
 
     const formToRender =
       // PATH ? SIGN IN : SIGN UP
-      path === '/sign-in' ? (
+      path === '/signin' ? (
         <SignIn onSubmit={this.submit} errorMessage={error}>
           <div styleName='tabs'>
             <Link
-              to='/sign-in'
+              to='/signin'
               onClick={this.resetErrors}
-              name='sign-in'
+              name='signin'
               styleName='tab tab-active'
             >
               <span>Sign In</span>
             </Link>
             <Link
-              to='/sign-up'
+              to='/signup'
               onClick={this.resetErrors}
-              name='sign-up'
+              name='signup'
               styleName='tab'
             >
               <span>Sign Up</span>
@@ -62,17 +69,17 @@ class AuthPage extends Component {
         <SignUp onSubmit={this.submit} errorMessage={error}>
           <div styleName='tabs'>
             <Link
-              to='/sign-in'
+              to='/signin'
               onClick={this.resetErrors}
-              name='sign-in'
+              name='signin'
               styleName='tab'
             >
               <span>Sign In</span>
             </Link>
             <Link
-              to='/sign-up'
+              to='/signup'
               onClick={this.resetErrors}
-              name='sign-up'
+              name='signup'
               styleName='tab tab-active'
             >
               <span>Sign Up</span>
@@ -85,7 +92,11 @@ class AuthPage extends Component {
   };
 
   render() {
-    const { isFetching } = this.props;
+    const { isFetching, isAuthenticated } = this.props;
+
+    if (isAuthenticated) {
+      return <Redirect to='/' />;
+    }
 
     return (
       <div styleName='auth-page'>
@@ -104,7 +115,8 @@ class AuthPage extends Component {
 
 const mapStateToProps = state => ({
   isFetching: state.form.isFetching,
-  error: state.auth.error
+  error: state.auth.error,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -121,7 +133,9 @@ AuthPage.propTypes = {
   resetError: PropTypes.func
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CSSModules(AuthPage, styles, { allowMultiple: true }));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CSSModules(AuthPage, styles, { allowMultiple: true }))
+);

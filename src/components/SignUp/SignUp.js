@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import { Field } from 'redux-form';
-import { validate } from '../../utils/validate';
+import { validate } from 'utils/validate';
 import FormField from './FormField';
 
 import styles from './SignUp.module.scss';
