@@ -7,3 +7,7 @@ export const getFetchProducts = () => {
 export const getFetchDetails = id => {
   return get('/posters/' + id);
 };
+
+export const getSearchProducts = query => {
+  return get('/posters/?search=' + query);
+};

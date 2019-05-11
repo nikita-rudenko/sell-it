@@ -4,10 +4,17 @@ import {
   FETCH_PRODUCTS_FAILURE,
   GET_DETAILS_REQUEST,
   GET_DETAILS_SUCCESS,
-  GET_DETAILS_FAILURE
+  GET_DETAILS_FAILURE,
+  SEARCH_PRODUCTS_REQUEST,
+  SEARCH_PRODUCTS_SUCCESS,
+  SEARCH_PRODUCTS_FAILURE
 } from '../actions/productActions';
 
-import { getFetchProducts, getFetchDetails } from 'api-client/products';
+import {
+  getFetchProducts,
+  getFetchDetails,
+  getSearchProducts
+} from 'api-client/products';
 import { put, takeEvery, call } from 'redux-saga/effects';
 
 export function* watchFetchProducts() {
@@ -42,11 +49,32 @@ export function* getDetails(action) {
     const result = yield call(getFetchDetails, payload);
     yield put({
       type: GET_DETAILS_SUCCESS,
-      payload: result.data
+      payload: result.data.data
     });
   } catch (error) {
     yield put({
       type: GET_DETAILS_FAILURE,
+      payload: error
+    });
+  }
+}
+
+export function* watchSearchProducts() {
+  yield takeEvery(SEARCH_PRODUCTS_REQUEST, searchProducts);
+}
+
+export function* searchProducts(action) {
+  try {
+    const { payload } = action;
+    const result = yield call(getSearchProducts, payload);
+    console.log(result);
+    yield put({
+      type: SEARCH_PRODUCTS_SUCCESS,
+      payload: result.data.data
+    });
+  } catch (error) {
+    yield put({
+      type: SEARCH_PRODUCTS_FAILURE,
       payload: error
     });
   }

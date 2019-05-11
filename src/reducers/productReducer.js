@@ -5,13 +5,14 @@ import {
   GET_DETAILS_SUCCESS,
   FETCH_PRODUCTS_FAILURE,
   GET_DETAILS_FAILURE,
-  SEARCH_PRODUCTS
+  SEARCH_PRODUCTS_REQUEST,
+  SEARCH_PRODUCTS_SUCCESS,
+  SEARCH_PRODUCTS_FAILURE
 } from '../actions/productActions';
 
 const initialState = {
   isFetching: false,
   productList: null,
-  searchQuery: null,
   details: null,
   error: null
 };
@@ -25,7 +26,7 @@ export default function(state = initialState, action) {
       return { ...state, productList: action.payload, isFetching: false };
 
     case FETCH_PRODUCTS_FAILURE:
-      return { ...state, error: action.payload };
+      return { ...state, isFetching: false, error: action.payload };
 
     case GET_DETAILS_REQUEST:
       return { ...state, isFetching: true };
@@ -34,10 +35,16 @@ export default function(state = initialState, action) {
       return { ...state, details: action.payload, isFetching: false };
 
     case GET_DETAILS_FAILURE:
-      return { ...state, error: action.payload };
+      return { ...state, isFetching: false, error: action.payload };
 
-    case SEARCH_PRODUCTS:
-      return { ...state, searchQuery: action.payload };
+    case SEARCH_PRODUCTS_REQUEST:
+      return { ...state, isFetching: true };
+
+    case SEARCH_PRODUCTS_SUCCESS:
+      return { ...state, productList: action.payload, isFetching: false };
+
+    case SEARCH_PRODUCTS_FAILURE:
+      return { ...state, isFetching: false, error: action.payload };
 
     default:
       return state;

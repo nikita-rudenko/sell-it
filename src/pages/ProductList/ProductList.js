@@ -17,13 +17,15 @@ class ProductList extends Component {
     this.props.fetchProducts();
   }
 
-  mapProducts = data => {
-    return data ? (
+  mapProducts = (data, isFetching) => {
+    return data !== null && !isFetching && data.length > 0 ? (
       data.map(item => {
         return <ProductItem key={item.pk} item={item} />;
       })
     ) : (
-      <div>"An error occured"</div>
+      <div styleName='no-results'>
+        <h1>No results</h1>
+      </div>
     );
   };
 
@@ -35,10 +37,12 @@ class ProductList extends Component {
       <>
         <Header />
         <main>
-          {isFetching ? (
-            <Loading />
+          {!isFetching ? (
+            <section styleName='product-list'>
+              {this.mapProducts(data, isFetching)}
+            </section>
           ) : (
-            <section styleName='product-list'>{this.mapProducts(data)}</section>
+            <Loading />
           )}
         </main>
         <Footer />
@@ -47,20 +51,10 @@ class ProductList extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { searchQuery, isFetching } = state.product;
-  let { productList } = state.product;
-
-  if (searchQuery) {
-    productList = productList.filter(product =>
-      product.theme.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  }
-  return {
-    productList,
-    isFetching
-  };
-};
+const mapStateToProps = state => ({
+  productList: state.product.productList,
+  isFetching: state.product.isFetching
+});
 
 const mapDispatchToProps = dispatch => ({
   fetchProducts: () => dispatch(fetchProducts())
