@@ -10,7 +10,7 @@ import CSSModules from 'react-css-modules';
 import styles from './Header.module.scss';
 import logo from 'assets/img/logo-small.png';
 import searchIcon from 'assets/img/icons/fa-search.png';
-import avatar from 'assets/img/avatar.png';
+import avatar from 'assets/img/avatar-default.png';
 import iconSignOut from 'assets/img/icons/fa-sign-out.png';
 
 class Header extends Component {
@@ -23,7 +23,9 @@ class Header extends Component {
   };
 
   render() {
-    return (
+    const { userData, isFetching } = this.props;
+
+    return !isFetching ? (
       <header styleName='header'>
         <Link to='/'>
           <img styleName='logo' src={logo} alt='Small logo.' />
@@ -42,7 +44,9 @@ class Header extends Component {
         <div styleName='userblock'>
           <div styleName='profile'>
             <img styleName='avatar' src={avatar} alt='User avatar' />
-            <div styleName='name'>Kim Evans</div>
+            <div styleName='name'>
+              {userData === null ? 'Username' : userData.username}
+            </div>
           </div>
           <Link to='/signin' onClick={this.handleSignOut} styleName='sign-out'>
             <img src={iconSignOut} title='Sign Out' alt='Sign Out.' />
@@ -57,12 +61,15 @@ class Header extends Component {
           </div>
         </div>
       </header>
+    ) : (
+      <div>An error occured</div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  userData: state.userData
+  userData: state.auth.userData,
+  isFetching: state.auth.isFetching
 });
 
 const mapDispatchToProps = dispatch => ({

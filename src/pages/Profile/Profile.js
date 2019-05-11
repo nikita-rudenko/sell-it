@@ -2,23 +2,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { fetchProfileData } from 'actions/profile';
+// import { fetchProfileData } from 'actions/profile';
 
 import CSSModules from 'react-css-modules';
 import styles from './Profile.module.scss';
-import avatar from 'assets/img/avatar.png';
+import avatar from 'assets/img/avatar-default.png';
 
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import Loading from 'components/Loading/Loading';
 
 class Profile extends Component {
-  componentDidMount() {
-    this.props.fetchProfileData();
-  }
+  // componentDidMount() {
+  //   this.props.fetchProfileData();
+  // }
 
   render() {
-    const { profileData, isFetching } = this.props;
+    const { userData, isFetching } = this.props;
 
     return (
       <>
@@ -27,7 +27,7 @@ class Profile extends Component {
           <div styleName='container'>
             <div styleName='user'>
               <img styleName='avatar' src={avatar} alt='Avatar.' />
-              <h1>{profileData}</h1>
+              <h1>{userData === null ? 'Username' : userData.username}</h1>
             </div>
           </div>
         ) : (
@@ -40,22 +40,21 @@ class Profile extends Component {
 }
 
 const mapStateToProps = state => {
-  const { profileData, isFetching } = state.profile;
-  return {
-    profileData,
-    isFetching
-  };
+  const { userData, isFetching } = state.auth;
+  return { userData, isFetching };
 };
 
-const mapDispatchToProps = dispatch => ({
-  fetchProfileData: () => dispatch(fetchProfileData())
-});
+// const mapDispatchToProps = dispatch => ({
+//   fetchProfileData: () => dispatch(fetchProfileData())
+// });
 
 Profile.propTypes = {
-  fetchProfileData: PropTypes.func
+  userData: PropTypes.object,
+  isFetching: PropTypes.bool
+  //   fetchProfileData: PropTypes.func
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(CSSModules(Profile, styles));
