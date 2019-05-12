@@ -4,7 +4,8 @@ import {
   FETCH_PROFILE_DATA_FAILURE
 } from '../actions/profile';
 
-import { put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
+import { getProfileData } from '../api-client/profile';
 
 export function* watchFetchProfileData() {
   yield takeEvery(FETCH_PROFILE_DATA_REQUEST, fetchProfileData);
@@ -12,10 +13,13 @@ export function* watchFetchProfileData() {
 
 export function* fetchProfileData() {
   try {
-    const result = 'Kim Evans';
+    const token = yield localStorage.getItem('token');
+    const headers = { Authorization: `JWT ${token}` };
+
+    const result = yield call(getProfileData, headers);
     yield put({
       type: FETCH_PROFILE_DATA_SUCCESS,
-      payload: result,
+      payload: result.data,
       meta: {
         printLog: true
       }

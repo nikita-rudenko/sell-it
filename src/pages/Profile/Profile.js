@@ -2,37 +2,48 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-// import { fetchProfileData } from 'actions/profile';
+import { fetchProfileData } from 'actions/profile';
 
 import CSSModules from 'react-css-modules';
 import styles from './Profile.module.scss';
-import avatar from 'assets/img/avatar-default.png';
+import defAvatar from 'assets/img/avatar-default.png';
 
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import Loading from 'components/Loading/Loading';
 
 class Profile extends Component {
-  // componentDidMount() {
-  //   this.props.fetchProfileData();
-  // }
+  componentDidMount() {
+    this.props.fetchProfileData();
+  }
+
+  renderProfileData = () => {
+    const { isFetching, profileData } = this.props;
+
+    if(!isFetching && profileData) {
+      const {avatar, email, first_name, last_name, location, username} = profileData;
+
+      return (
+      <div styleName='container'>
+        <div styleName='user'>
+          <img styleName='avatar' src={avatar ? avatar : defAvatar} alt='Avatar.' />
+          <h1>{username ? username : 'Your username'}</h1>
+          <ul styleName='info-list'>
+            {first_name && last_name ? (<li>Full name: `${last_name} ${last_name}`</li>) : null}
+            {email ? (<li>Email: {email}</li>) : null}
+            {location ? (<li>Location: {location}</li>) : null}
+          </ul>
+        </div>
+      </div>
+    )}  else { return (<Loading />) }
+  }
 
   render() {
-    const { userData, isFetching } = this.props;
 
     return (
       <>
         <Header />
-        {!isFetching ? (
-          <div styleName='container'>
-            <div styleName='user'>
-              <img styleName='avatar' src={avatar} alt='Avatar.' />
-              <h1>{userData === null ? 'Username' : userData.username}</h1>
-            </div>
-          </div>
-        ) : (
-          <Loading />
-        )}
+        {this.renderProfileData()}
         <Footer />
       </>
     );
@@ -40,21 +51,20 @@ class Profile extends Component {
 }
 
 const mapStateToProps = state => {
-  const { userData, isFetching } = state.auth;
-  return { userData, isFetching };
+  const { profileData, isFetching } = state.profile;
+  return { isFetching, profileData };
 };
 
-// const mapDispatchToProps = dispatch => ({
-//   fetchProfileData: () => dispatch(fetchProfileData())
-// });
+const mapDispatchToProps = dispatch => ({
+  fetchProfileData: () => dispatch(fetchProfileData())
+});
 
 Profile.propTypes = {
-  userData: PropTypes.object,
-  isFetching: PropTypes.bool
-  //   fetchProfileData: PropTypes.func
+  isFetching: PropTypes.bool,
+  fetchProfileData: PropTypes.func
 };
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(CSSModules(Profile, styles));

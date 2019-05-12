@@ -2,18 +2,20 @@ import axios from 'axios';
 
 const API_URL = 'http://light-it-04.tk/api/';
 
-function request({ method, url, data }) {
+function request({ method, url, data, headers }) {
   return axios({
     method,
     url: `${API_URL}${url}`,
-    data
+    data,
+    headers
   });
 }
 
-export const get = path => {
+export const get = (path, headers) => {  
   return request({
     method: 'GET',
-    url: path
+    url: path,
+    headers
   });
 };
 
