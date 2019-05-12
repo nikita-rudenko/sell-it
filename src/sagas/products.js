@@ -7,7 +7,8 @@ import {
   GET_DETAILS_FAILURE,
   SEARCH_PRODUCTS_REQUEST,
   SEARCH_PRODUCTS_SUCCESS,
-  SEARCH_PRODUCTS_FAILURE
+  SEARCH_PRODUCTS_FAILURE,
+  ADD_NEW_PRODUCT_REQUEST
 } from '../actions/products';
 
 import {
@@ -67,7 +68,7 @@ export function* searchProducts(action) {
   try {
     const { payload } = action;
     const result = yield call(getSearchProducts, payload);
-    console.log(result);
+
     yield put({
       type: SEARCH_PRODUCTS_SUCCESS,
       payload: result.data.data
@@ -80,8 +81,17 @@ export function* searchProducts(action) {
   }
 }
 
+export function* watchAddNewProduct() {
+  yield takeEvery(ADD_NEW_PRODUCT_REQUEST, addNewProduct);
+}
+
+export function* addNewProduct(action) {
+  yield console.log(action);
+}
+
 export const productSagas = [
   watchFetchProducts(),
   watchGetDetails(),
-  watchSearchProducts()
+  watchSearchProducts(),
+  watchAddNewProduct()
 ];

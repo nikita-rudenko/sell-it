@@ -52,7 +52,7 @@ class Header extends Component {
             <img src={iconSignOut} title='Sign Out' alt='Sign Out.' />
           </Link>
           <div styleName='sub-menu'>
-            <Link styleName='sub-action' to='/profile'>
+            <Link styleName='sub-action' to='/add'>
               <span>Add new post</span>
             </Link>
             <Link styleName='sub-action' to='/profile'>

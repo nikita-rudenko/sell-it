@@ -7,7 +7,10 @@ import {
   GET_DETAILS_FAILURE,
   SEARCH_PRODUCTS_REQUEST,
   SEARCH_PRODUCTS_SUCCESS,
-  SEARCH_PRODUCTS_FAILURE
+  SEARCH_PRODUCTS_FAILURE,
+  ADD_NEW_PRODUCT_REQUEST,
+  ADD_NEW_PRODUCT_SUCCESS,
+  ADD_NEW_PRODUCT_FAILURE
 } from '../actions/products';
 
 const initialState = {
@@ -32,8 +35,6 @@ export default function(state = initialState, action) {
       return { ...state, isFetching: true };
 
     case GET_DETAILS_SUCCESS:
-      console.log(action.payload);
-
       return { ...state, details: action.payload, isFetching: false };
 
     case GET_DETAILS_FAILURE:
@@ -46,6 +47,15 @@ export default function(state = initialState, action) {
       return { ...state, productList: action.payload, isFetching: false };
 
     case SEARCH_PRODUCTS_FAILURE:
+      return { ...state, isFetching: false, error: action.payload };
+
+    case ADD_NEW_PRODUCT_REQUEST:
+      return { ...state, isFetching: true };
+
+    case ADD_NEW_PRODUCT_SUCCESS:
+      return { ...state, isFetching: false };
+
+    case ADD_NEW_PRODUCT_FAILURE:
       return { ...state, isFetching: false, error: action.payload };
 
     default:

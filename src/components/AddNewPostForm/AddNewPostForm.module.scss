@@ -1,0 +1,75 @@
+.body {
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  width: 100%;
+}
+
+.checkbox {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.input {
+  width: 100%;
+  height: 3.5rem;
+  padding: 0 1rem;
+  margin: 0;
+  background: transparent;
+  border: none;
+  outline: 0;
+  color: var(--color-dark);
+  border-bottom: 2px solid var(--color-primary);
+  margin-bottom: 3rem;
+  position: relative;
+
+  &::placeholder {
+    color: var(--color-dark);
+  }
+}
+
+.select {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.submit {
+  background: var(--color-white);
+  padding: 0;
+  border: none;
+  outline: 0;
+  color: inherit;
+  height: 4rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  font-size: 1.8rem;
+  text-decoration: none;
+  padding: 1rem 0;
+
+  &:active {
+    border-bottom: 3px solid var(--color-success);
+  }
+
+  &:hover {
+    border-bottom: 3px solid var(--color-success);
+  }
+}
+
+.hint {
+  color: var(--color-warning);
+  position: absolute;
+  margin-top: -2.5rem;
+  margin-left: 1rem;
+}
+
+.error {
+  color: var(--color-warning);
+  text-align: center;
+  position: absolute;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}

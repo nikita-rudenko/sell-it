@@ -6,7 +6,7 @@ import FormField from './FormField';
 
 import styles from './SignIn.module.scss';
 
-let SignIn = ({ handleSubmit, valid, submitting, errorMessage, children }) => (
+let SignIn = ({ handleSubmit, submitting, errorMessage, children }) => (
   <form className={styles.body} onSubmit={handleSubmit}>
     {children}
     <div>
