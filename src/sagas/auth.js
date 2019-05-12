@@ -7,11 +7,19 @@ import {
   SIGN_UP_FAILURE,
   SIGN_OUT_REQUEST,
   SIGN_OUT_SUCCESS,
-  SIGN_OUT_FAILURE
+  SIGN_OUT_FAILURE,
+  AUTH_USER_REQUEST,
+  AUTH_USER_SUCCESS,
+  AUTH_USER_FAILURE
   // signInActions
 } from '../actions/auth';
 import { takeEvery, call, put } from 'redux-saga/effects';
-import { postSignIn, postSignUp, getSignOut } from 'api-client/auth';
+import {
+  postSignIn,
+  postSignUp,
+  getSignOut,
+  postAuthUser
+} from 'api-client/auth';
 
 export function* watchSignIn() {
   // yield takeEvery(signInActions.request, signIn);
@@ -56,4 +64,26 @@ export function* signOut() {
   }
 }
 
-export const authSagas = [watchSignIn(), watchSignUp(), watchSignOut()];
+export function* watchAuthUser() {
+  yield takeEvery(AUTH_USER_REQUEST, authUser);
+}
+
+export function* authUser() {
+  try {
+    const token = yield localStorage.getItem('token');
+    const data = { token: token };
+
+    yield call(postAuthUser, data);
+
+    yield put({ type: AUTH_USER_SUCCESS });
+  } catch (error) {
+    yield put({ type: AUTH_USER_FAILURE });
+  }
+}
+
+export const authSagas = [
+  watchSignIn(),
+  watchSignUp(),
+  watchSignOut(),
+  watchAuthUser()
+];

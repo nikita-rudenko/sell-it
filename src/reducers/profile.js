@@ -7,6 +7,7 @@ import {
 const initialState = {
   isFetching: false,
   profileData: null,
+  isSession: false,
   error: null
 };
 
@@ -16,7 +17,12 @@ export default function(state = initialState, action) {
       return { ...state, isFetching: true };
 
     case FETCH_PROFILE_DATA_SUCCESS:
-      return { ...state, profileData: action.payload, isFetching: false };
+      return {
+        ...state,
+        profileData: action.payload,
+        isSession: true,
+        isFetching: false
+      };
 
     case FETCH_PROFILE_DATA_FAILURE:
       return { ...state, error: action.payload };

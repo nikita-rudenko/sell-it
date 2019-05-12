@@ -11,6 +11,9 @@ export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
 export const SIGN_OUT_REQUEST = 'SIGN_OUT_REQUEST';
 export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
 export const SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE';
+export const AUTH_USER_REQUEST = 'AUTH_USER_REQUEST';
+export const AUTH_USER_SUCCESS = 'AUTH_USER_SUCCESS';
+export const AUTH_USER_FAILURE = 'AUTH_USER_FAILURE';
 export const RESET_AUTH_ERROR = 'RESET_AUTH_ERROR';
 // export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 
@@ -26,6 +29,11 @@ export const signUp = userData => ({
 
 export const signOut = () => ({
   type: SIGN_OUT_REQUEST
+});
+
+export const authUser = token => ({
+  type: AUTH_USER_REQUEST,
+  payload: token
 });
 
 export const resetError = () => ({ type: RESET_AUTH_ERROR });

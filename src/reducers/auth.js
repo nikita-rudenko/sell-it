@@ -8,7 +8,10 @@ import {
   RESET_AUTH_ERROR,
   SIGN_OUT_REQUEST,
   SIGN_OUT_SUCCESS,
-  SIGN_OUT_FAILURE
+  SIGN_OUT_FAILURE,
+  AUTH_USER_REQUEST,
+  AUTH_USER_SUCCESS,
+  AUTH_USER_FAILURE
   // signInActions
 } from '../actions/auth';
 
@@ -82,6 +85,27 @@ export default function(state = initialState, action) {
         ...state,
         isFetching: false,
         error: action.payload
+      };
+
+    case AUTH_USER_REQUEST:
+      return {
+        ...state,
+        isFetching: true
+      };
+
+    case AUTH_USER_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        isAuthenticated: true
+      };
+
+    case AUTH_USER_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        isAuthenticated: false,
+        isFetching: false
       };
 
     case RESET_AUTH_ERROR:

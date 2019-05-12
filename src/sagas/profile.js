@@ -19,10 +19,7 @@ export function* fetchProfileData() {
     const result = yield call(getProfileData, headers);
     yield put({
       type: FETCH_PROFILE_DATA_SUCCESS,
-      payload: result.data,
-      meta: {
-        printLog: true
-      }
+      payload: result.data
     });
   } catch (error) {
     yield put({

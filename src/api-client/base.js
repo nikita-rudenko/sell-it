@@ -11,7 +11,7 @@ function request({ method, url, data, headers }) {
   });
 }
 
-export const get = (path, headers) => {  
+export const get = (path, headers) => {
   return request({
     method: 'GET',
     url: path,
@@ -23,6 +23,7 @@ export const post = (path, data) => {
   return request({
     method: 'POST',
     url: path,
-    data
+    data,
+    token: data
   });
 };

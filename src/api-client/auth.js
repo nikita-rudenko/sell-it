@@ -11,3 +11,7 @@ export const postSignUp = data => {
 export const getSignOut = () => {
   return get('logout/');
 };
+
+export const postAuthUser = token => {
+  return post('token-verify/', token);
+};

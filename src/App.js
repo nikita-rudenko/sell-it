@@ -5,7 +5,14 @@ import { store, history } from './store/store';
 
 import Routes from 'routes/Routes';
 
+import { authUser } from './actions/auth';
+
 import 'sass/main.scss';
+
+const token = localStorage.getItem('token');
+if (token) {
+  store.dispatch(authUser());
+}
 
 class App extends Component {
   render() {
