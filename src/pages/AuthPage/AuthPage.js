@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { signIn, signUp, resetError } from 'actions/auth';
@@ -13,13 +13,6 @@ import SignUp from 'components/SignUp/SignUp';
 import Loading from 'components/Loading/Loading';
 
 class AuthPage extends Component {
-  constructor(props) {
-    super(props);
-    if (props.isAuthenticated) {
-      props.history.push('/');
-    }
-  }
-
   // send data from according form (path)
   submit = values => {
     if (this.props.match.path === '/signin') {
@@ -92,11 +85,7 @@ class AuthPage extends Component {
   };
 
   render() {
-    const { isFetching, isAuthenticated } = this.props;
-
-    if (isAuthenticated) {
-      return <Redirect to='/' />;
-    }
+    const { isFetching } = this.props;
 
     return (
       <div styleName='auth-page'>
@@ -115,8 +104,7 @@ class AuthPage extends Component {
 
 const mapStateToProps = state => ({
   isFetching: state.form.isFetching,
-  error: state.auth.error,
-  isAuthenticated: state.auth.isAuthenticated
+  error: state.auth.error
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -133,9 +121,7 @@ AuthPage.propTypes = {
   resetError: PropTypes.func
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(CSSModules(AuthPage, styles, { allowMultiple: true }))
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CSSModules(AuthPage, styles, { allowMultiple: true }));

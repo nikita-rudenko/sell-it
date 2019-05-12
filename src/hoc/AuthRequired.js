@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 export default function(ComposedComponent) {
-  class RequireAuth extends Component {
+  class AuthRequired extends Component {
     componentWillMount() {
       if (!this.props.isAuthenticated) {
         this.props.history.push('/signin');
@@ -24,5 +24,5 @@ export default function(ComposedComponent) {
     return { isAuthenticated: state.auth.isAuthenticated };
   }
 
-  return connect(mapStateToProps)(RequireAuth);
+  return connect(mapStateToProps)(AuthRequired);
 }

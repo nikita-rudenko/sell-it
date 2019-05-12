@@ -3,7 +3,7 @@ import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store, history } from './store/store';
 
-import Routes from 'routes/Routes';
+import Routes from 'routes/routes';
 
 import { authUser } from './actions/auth';
 
