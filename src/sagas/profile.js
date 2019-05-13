@@ -1,14 +1,10 @@
-import {
-  FETCH_PROFILE_DATA_REQUEST,
-  FETCH_PROFILE_DATA_SUCCESS,
-  FETCH_PROFILE_DATA_FAILURE
-} from '../actions/profile';
+import { fetchProfileDataActions } from '../actions/profile';
 
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { getProfileData } from '../api-client/profile';
 
 export function* watchFetchProfileData() {
-  yield takeEvery(FETCH_PROFILE_DATA_REQUEST, fetchProfileData);
+  yield takeEvery(fetchProfileDataActions.request, fetchProfileData);
 }
 
 export function* fetchProfileData() {
@@ -18,12 +14,12 @@ export function* fetchProfileData() {
 
     const result = yield call(getProfileData, headers);
     yield put({
-      type: FETCH_PROFILE_DATA_SUCCESS,
+      type: fetchProfileDataActions.success,
       payload: result.data
     });
   } catch (error) {
     yield put({
-      type: FETCH_PROFILE_DATA_FAILURE,
+      type: fetchProfileDataActions.failure,
       payload: error,
       meta: {
         printLog: true

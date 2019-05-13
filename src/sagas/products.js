@@ -1,14 +1,8 @@
 import {
-  FETCH_PRODUCTS_REQUEST,
-  FETCH_PRODUCTS_SUCCESS,
-  FETCH_PRODUCTS_FAILURE,
-  GET_DETAILS_REQUEST,
-  GET_DETAILS_SUCCESS,
-  GET_DETAILS_FAILURE,
-  SEARCH_PRODUCTS_REQUEST,
-  SEARCH_PRODUCTS_SUCCESS,
-  SEARCH_PRODUCTS_FAILURE,
-  ADD_NEW_PRODUCT_REQUEST
+  fetchProductsActions,
+  getDetailsActions,
+  searchProductsActions,
+  addNewProductActions
 } from '../actions/products';
 
 import {
@@ -16,22 +10,23 @@ import {
   getFetchDetails,
   getSearchProducts
 } from 'api-client/products';
+
 import { put, takeEvery, call } from 'redux-saga/effects';
 
 export function* watchFetchProducts() {
-  yield takeEvery(FETCH_PRODUCTS_REQUEST, fetchProducts);
+  yield takeEvery(fetchProductsActions.request, fetchProducts);
 }
 
 export function* fetchProducts() {
   try {
     const result = yield call(getFetchProducts);
     yield put({
-      type: FETCH_PRODUCTS_SUCCESS,
+      type: fetchProductsActions.success,
       payload: result.data.data
     });
   } catch (error) {
     yield put({
-      type: FETCH_PRODUCTS_FAILURE,
+      type: fetchProductsActions.failure,
       payload: error,
       meta: {
         printLog: true
@@ -41,7 +36,7 @@ export function* fetchProducts() {
 }
 
 export function* watchGetDetails() {
-  yield takeEvery(GET_DETAILS_REQUEST, getDetails);
+  yield takeEvery(getDetailsActions.request, getDetails);
 }
 
 export function* getDetails(action) {
@@ -49,19 +44,19 @@ export function* getDetails(action) {
     const { payload } = action;
     const result = yield call(getFetchDetails, payload);
     yield put({
-      type: GET_DETAILS_SUCCESS,
+      type: getDetailsActions.success,
       payload: result.data
     });
   } catch (error) {
     yield put({
-      type: GET_DETAILS_FAILURE,
+      type: getDetailsActions.failure,
       payload: error
     });
   }
 }
 
 export function* watchSearchProducts() {
-  yield takeEvery(SEARCH_PRODUCTS_REQUEST, searchProducts);
+  yield takeEvery(searchProductsActions.request, searchProducts);
 }
 
 export function* searchProducts(action) {
@@ -70,19 +65,19 @@ export function* searchProducts(action) {
     const result = yield call(getSearchProducts, payload);
 
     yield put({
-      type: SEARCH_PRODUCTS_SUCCESS,
+      type: searchProductsActions.success,
       payload: result.data.data
     });
   } catch (error) {
     yield put({
-      type: SEARCH_PRODUCTS_FAILURE,
+      type: searchProductsActions.failure,
       payload: error
     });
   }
 }
 
 export function* watchAddNewProduct() {
-  yield takeEvery(ADD_NEW_PRODUCT_REQUEST, addNewProduct);
+  yield takeEvery(addNewProductActions.request, addNewProduct);
 }
 
 export function* addNewProduct(action) {

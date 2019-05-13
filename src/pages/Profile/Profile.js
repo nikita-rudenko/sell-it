@@ -20,26 +20,43 @@ class Profile extends Component {
   renderProfileData = () => {
     const { isFetching, profileData } = this.props;
 
-    if(!isFetching && profileData) {
-      const {avatar, email, first_name, last_name, location, username} = profileData;
+    if (!isFetching && profileData) {
+      const {
+        avatar,
+        email,
+        first_name,
+        last_name,
+        location,
+        username
+      } = profileData;
 
       return (
-      <div styleName='container'>
-        <div styleName='user'>
-          <img styleName='avatar' src={avatar ? avatar : defAvatar} alt='Avatar.' />
-          <h1>{username ? username : 'Your username'}</h1>
-          <ul styleName='info-list'>
-            {first_name && last_name ? (<li>Full name: `${last_name} ${last_name}`</li>) : null}
-            {email ? (<li>Email: {email}</li>) : null}
-            {location ? (<li>Location: {location}</li>) : null}
-          </ul>
+        <div styleName='container'>
+          <div styleName='user'>
+            <img
+              styleName='avatar'
+              src={avatar ? avatar : defAvatar}
+              alt='Avatar.'
+            />
+            <h1>{username ? username : 'Your username'}</h1>
+            <ul styleName='info-list'>
+              {first_name && last_name ? (
+                <li>
+                  Full name: `${last_name} ${last_name}`
+                </li>
+              ) : null}
+              {email ? <li>Email: {email}</li> : null}
+              {location ? <li>Location: {location}</li> : null}
+            </ul>
+          </div>
         </div>
-      </div>
-    )}  else { return (<Loading />) }
-  }
+      );
+    } else {
+      return <Loading />;
+    }
+  };
 
   render() {
-
     return (
       <>
         <Header />
@@ -60,6 +77,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 Profile.propTypes = {
+  profileData: PropTypes.object,
   isFetching: PropTypes.bool,
   fetchProfileData: PropTypes.func
 };

@@ -1,16 +1,8 @@
 import {
-  FETCH_PRODUCTS_REQUEST,
-  FETCH_PRODUCTS_SUCCESS,
-  GET_DETAILS_REQUEST,
-  GET_DETAILS_SUCCESS,
-  FETCH_PRODUCTS_FAILURE,
-  GET_DETAILS_FAILURE,
-  SEARCH_PRODUCTS_REQUEST,
-  SEARCH_PRODUCTS_SUCCESS,
-  SEARCH_PRODUCTS_FAILURE,
-  ADD_NEW_PRODUCT_REQUEST,
-  ADD_NEW_PRODUCT_SUCCESS,
-  ADD_NEW_PRODUCT_FAILURE
+  fetchProductsActions,
+  getDetailsActions,
+  searchProductsActions,
+  addNewProductActions
 } from '../actions/products';
 
 const initialState = {
@@ -22,40 +14,40 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCH_PRODUCTS_REQUEST:
+    case fetchProductsActions.request:
       return { ...state, isFetching: true };
 
-    case FETCH_PRODUCTS_SUCCESS:
+    case fetchProductsActions.success:
       return { ...state, productList: action.payload, isFetching: false };
 
-    case FETCH_PRODUCTS_FAILURE:
+    case fetchProductsActions.failure:
       return { ...state, isFetching: false, error: action.payload };
 
-    case GET_DETAILS_REQUEST:
+    case getDetailsActions.request:
       return { ...state, isFetching: true };
 
-    case GET_DETAILS_SUCCESS:
+    case getDetailsActions.success:
       return { ...state, details: action.payload, isFetching: false };
 
-    case GET_DETAILS_FAILURE:
+    case getDetailsActions.failure:
       return { ...state, isFetching: false, error: action.payload };
 
-    case SEARCH_PRODUCTS_REQUEST:
+    case searchProductsActions.request:
       return { ...state, isFetching: true };
 
-    case SEARCH_PRODUCTS_SUCCESS:
+    case searchProductsActions.success:
       return { ...state, productList: action.payload, isFetching: false };
 
-    case SEARCH_PRODUCTS_FAILURE:
+    case searchProductsActions.failure:
       return { ...state, isFetching: false, error: action.payload };
 
-    case ADD_NEW_PRODUCT_REQUEST:
+    case addNewProductActions.request:
       return { ...state, isFetching: true };
 
-    case ADD_NEW_PRODUCT_SUCCESS:
+    case addNewProductActions.success:
       return { ...state, isFetching: false };
 
-    case ADD_NEW_PRODUCT_FAILURE:
+    case addNewProductActions.failure:
       return { ...state, isFetching: false, error: action.payload };
 
     default:

@@ -1,18 +1,9 @@
 import {
-  SIGN_IN_REQUEST,
-  SIGN_IN_SUCCESS,
-  SIGN_IN_FAILURE,
-  SIGN_UP_REQUEST,
-  SIGN_UP_SUCCESS,
-  SIGN_UP_FAILURE,
-  RESET_AUTH_ERROR,
-  SIGN_OUT_REQUEST,
-  SIGN_OUT_SUCCESS,
-  SIGN_OUT_FAILURE,
-  AUTH_USER_REQUEST,
-  AUTH_USER_SUCCESS,
-  AUTH_USER_FAILURE
-  // signInActions
+  signInActions,
+  signUpActions,
+  signOutActions,
+  authUserActions,
+  resetErrorActions
 } from '../actions/auth';
 
 const initialState = {
@@ -24,11 +15,10 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    // case signInActions.request:
-    case SIGN_IN_REQUEST:
+    case signInActions.request:
       return { ...state, error: null, isFetching: true };
 
-    case SIGN_IN_SUCCESS:
+    case signInActions.success:
       return {
         ...state,
         userData: action.payload,
@@ -37,7 +27,7 @@ export default function(state = initialState, action) {
         error: null
       };
 
-    case SIGN_IN_FAILURE:
+    case signInActions.failure:
       return {
         ...state,
         error: action.payload,
@@ -45,10 +35,10 @@ export default function(state = initialState, action) {
         isFetching: false
       };
 
-    case SIGN_UP_REQUEST:
+    case signUpActions.request:
       return { ...state, error: null, isFetching: true };
 
-    case SIGN_UP_SUCCESS:
+    case signUpActions.success:
       return {
         ...state,
         userData: action.payload,
@@ -57,7 +47,7 @@ export default function(state = initialState, action) {
         error: null
       };
 
-    case SIGN_UP_FAILURE:
+    case signUpActions.failure:
       return {
         ...state,
         error: action.payload,
@@ -65,14 +55,14 @@ export default function(state = initialState, action) {
         isFetching: false
       };
 
-    case SIGN_OUT_REQUEST:
+    case signOutActions.request:
       return {
         ...state,
         error: null,
         isFetching: true
       };
 
-    case SIGN_OUT_SUCCESS:
+    case signOutActions.success:
       return {
         ...state,
         isFetching: false,
@@ -80,27 +70,27 @@ export default function(state = initialState, action) {
         isAuthenticated: false
       };
 
-    case SIGN_OUT_FAILURE:
+    case signOutActions.failure:
       return {
         ...state,
         isFetching: false,
         error: action.payload
       };
 
-    case AUTH_USER_REQUEST:
+    case authUserActions.request:
       return {
         ...state,
         isFetching: true
       };
 
-    case AUTH_USER_SUCCESS:
+    case authUserActions.success:
       return {
         ...state,
         isFetching: false,
         isAuthenticated: true
       };
 
-    case AUTH_USER_FAILURE:
+    case authUserActions.failure:
       return {
         ...state,
         error: action.payload,
@@ -108,7 +98,7 @@ export default function(state = initialState, action) {
         isFetching: false
       };
 
-    case RESET_AUTH_ERROR:
+    case resetErrorActions.request:
       return {
         ...state,
         error: null

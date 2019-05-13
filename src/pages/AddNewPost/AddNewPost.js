@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { addNewProduct } from 'actions/products';
 
 import Header from 'components/Header/Header';
@@ -27,17 +28,15 @@ class AddNewPost extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  isFetching: state.form.isFetching,
-  error: state.auth.error,
-  isAuthenticated: state.auth.isAuthenticated
-});
-
 const mapDispatchToProps = dispatch => ({
   addNewProduct: data => dispatch(addNewProduct(data))
 });
 
+AddNewPost.propTypes = {
+  addNewProduct: PropTypes.func
+};
+
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(CSSModules(AddNewPost, styles, { allowMultiple: true }));

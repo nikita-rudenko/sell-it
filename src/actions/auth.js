@@ -1,45 +1,32 @@
-// const identifier = '@@auth/';
+import createAsyncActions from './createAsyncActions';
 
-// export const signInActions = createAsyncActions(identifier, 'SIGN_IN');
+const identifier = '@@auth/';
 
-export const SIGN_IN_REQUEST = 'SIGN_IN_REQUEST';
-export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
-export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE';
-export const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST';
-export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
-export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
-export const SIGN_OUT_REQUEST = 'SIGN_OUT_REQUEST';
-export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
-export const SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE';
-export const AUTH_USER_REQUEST = 'AUTH_USER_REQUEST';
-export const AUTH_USER_SUCCESS = 'AUTH_USER_SUCCESS';
-export const AUTH_USER_FAILURE = 'AUTH_USER_FAILURE';
-export const RESET_AUTH_ERROR = 'RESET_AUTH_ERROR';
-// export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+// ACTIONS
+export const signInActions = createAsyncActions(identifier, 'SIGN_IN');
+export const signUpActions = createAsyncActions(identifier, 'SIGN_UP');
+export const signOutActions = createAsyncActions(identifier, 'SIGN_OUT');
+export const authUserActions = createAsyncActions(identifier, 'AUTH_USER');
+export const resetErrorActions = createAsyncActions(identifier, 'RESET_ERROR');
 
+// ACTION CREATORS
 export const signIn = userData => ({
-  type: SIGN_IN_REQUEST,
+  type: signInActions.request,
   payload: userData
 });
 
 export const signUp = userData => ({
-  type: SIGN_UP_REQUEST,
+  type: signUpActions.request,
   payload: userData
 });
 
 export const signOut = () => ({
-  type: SIGN_OUT_REQUEST
+  type: signOutActions.request
 });
 
 export const authUser = token => ({
-  type: AUTH_USER_REQUEST,
+  type: authUserActions.request,
   payload: token
 });
 
-export const resetError = () => ({ type: RESET_AUTH_ERROR });
-
-// const createAsyncActions = (prefix, name) => ({
-//   request: `${prefix}${name}_REQUEST`,
-//   sucess: `${prefix}${name}_SUCCESS`,
-//   failure: `${prefix}${name}_FAILURE`
-// });
+export const resetError = () => ({ type: resetErrorActions.request });

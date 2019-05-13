@@ -1,17 +1,8 @@
 import {
-  SIGN_IN_REQUEST,
-  SIGN_IN_SUCCESS,
-  SIGN_IN_FAILURE,
-  SIGN_UP_REQUEST,
-  SIGN_UP_SUCCESS,
-  SIGN_UP_FAILURE,
-  SIGN_OUT_REQUEST,
-  SIGN_OUT_SUCCESS,
-  SIGN_OUT_FAILURE,
-  AUTH_USER_REQUEST,
-  AUTH_USER_SUCCESS,
-  AUTH_USER_FAILURE
-  // signInActions
+  signInActions,
+  signUpActions,
+  signOutActions,
+  authUserActions
 } from '../actions/auth';
 import { takeEvery, call, put } from 'redux-saga/effects';
 import {
@@ -22,50 +13,49 @@ import {
 } from 'api-client/auth';
 
 export function* watchSignIn() {
-  // yield takeEvery(signInActions.request, signIn);
-  yield takeEvery(SIGN_IN_REQUEST, signIn);
+  yield takeEvery(signInActions.request, signIn);
 }
 
 export function* signIn(action) {
   try {
     const res = yield call(postSignIn, action.payload);
     yield localStorage.setItem('token', res.data.token);
-    yield put({ type: SIGN_IN_SUCCESS, payload: res.data.user });
+    yield put({ type: signInActions.success, payload: res.data.user });
   } catch (error) {
-    yield put({ type: SIGN_IN_FAILURE, payload: error.response.data });
+    yield put({ type: signInActions.failure, payload: error.response.data });
   }
 }
 
 export function* watchSignUp() {
-  yield takeEvery(SIGN_UP_REQUEST, signUp);
+  yield takeEvery(signUpActions.request, signUp);
 }
 
 export function* signUp(action) {
   try {
     const res = yield call(postSignUp, action.payload);
     yield localStorage.setItem('token', res.data.token);
-    yield put({ type: SIGN_UP_SUCCESS, payload: res.data.user });
+    yield put({ type: signUpActions.success, payload: res.data.user });
   } catch (error) {
-    yield put({ type: SIGN_UP_FAILURE, payload: error.response.data });
+    yield put({ type: signUpActions.success, payload: error.response.data });
   }
 }
 
 export function* watchSignOut() {
-  yield takeEvery(SIGN_OUT_REQUEST, signOut);
+  yield takeEvery(signOutActions.request, signOut);
 }
 
 export function* signOut() {
   try {
+    localStorage.removeItem('token');
     yield call(getSignOut);
-    yield localStorage.removeItem('token');
-    yield put({ type: SIGN_OUT_SUCCESS });
+    yield put({ type: signOutActions.success });
   } catch (error) {
-    yield put({ type: SIGN_OUT_FAILURE, payload: error.response.data });
+    yield put({ type: signOutActions.failure, payload: error.response.data });
   }
 }
 
 export function* watchAuthUser() {
-  yield takeEvery(AUTH_USER_REQUEST, authUser);
+  yield takeEvery(authUserActions.request, authUser);
 }
 
 export function* authUser() {
@@ -75,9 +65,9 @@ export function* authUser() {
 
     yield call(postAuthUser, data);
 
-    yield put({ type: AUTH_USER_SUCCESS });
+    yield put({ type: authUserActions.success });
   } catch (error) {
-    yield put({ type: AUTH_USER_FAILURE });
+    yield put({ type: authUserActions.failure });
   }
 }
 

@@ -1,5 +1,14 @@
-export const FETCH_PROFILE_DATA_REQUEST = 'FETCH_PROFILE_DATA_REQUEST';
-export const FETCH_PROFILE_DATA_SUCCESS = 'FETCH_PROFILE_DATA_SUCCESS';
-export const FETCH_PROFILE_DATA_FAILURE = 'FETCH_PROFILE_DATA_FAILURE';
+import createAsyncActions from './createAsyncActions';
 
-export const fetchProfileData = () => ({ type: FETCH_PROFILE_DATA_REQUEST });
+const identifier = '@@prof/';
+
+// ACTIONS
+export const fetchProfileDataActions = createAsyncActions(
+  identifier,
+  'FETCH_PROFILE_DATA'
+);
+
+// ACTION CREATORS
+export const fetchProfileData = () => ({
+  type: fetchProfileDataActions.request
+});

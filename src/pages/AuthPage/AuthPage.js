@@ -115,7 +115,7 @@ const mapDispatchToProps = dispatch => ({
 
 AuthPage.propTypes = {
   isFetching: PropTypes.bool,
-  error: PropTypes.bool,
+  error: PropTypes.object,
   signIn: PropTypes.func,
   signUp: PropTypes.func,
   resetError: PropTypes.func

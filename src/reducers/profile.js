@@ -1,30 +1,24 @@
-import {
-  FETCH_PROFILE_DATA_REQUEST,
-  FETCH_PROFILE_DATA_SUCCESS,
-  FETCH_PROFILE_DATA_FAILURE
-} from '../actions/profile';
+import { fetchProfileDataActions } from '../actions/profile';
 
 const initialState = {
   isFetching: false,
   profileData: null,
-  isSession: false,
   error: null
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCH_PROFILE_DATA_REQUEST:
+    case fetchProfileDataActions.request:
       return { ...state, isFetching: true };
 
-    case FETCH_PROFILE_DATA_SUCCESS:
+    case fetchProfileDataActions.success:
       return {
         ...state,
         profileData: action.payload,
-        isSession: true,
         isFetching: false
       };
 
-    case FETCH_PROFILE_DATA_FAILURE:
+    case fetchProfileDataActions.failure:
       return { ...state, error: action.payload };
 
     default:

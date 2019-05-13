@@ -24,6 +24,8 @@ class Header extends Component {
   };
 
   handleSignOut = () => {
+    console.log(this.props.signOut);
+
     this.props.signOut();
   };
 
@@ -44,9 +46,9 @@ class Header extends Component {
               {username ? profileData.username : 'Username'}
             </div>
           </div>
-          <Link to='/signin' onClick={this.handleSignOut} styleName='sign-out'>
+          <button onClick={this.handleSignOut} styleName='sign-out'>
             <img src={iconSignOut} title='Sign Out' alt='Sign Out.' />
-          </Link>
+          </button>
           <div styleName='sub-menu'>
             <Link styleName='sub-action' to='/add'>
               <span>Add new post</span>
@@ -58,7 +60,7 @@ class Header extends Component {
         </>
       );
     } else {
-      return <p>An error occured</p>;
+      return null;
     }
   };
 
@@ -91,13 +93,17 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  searchProducts: query => dispatch(searchProducts(query)),
   signOut: () => dispatch(signOut()),
+  searchProducts: query => dispatch(searchProducts(query)),
   fetchProfileData: () => dispatch(fetchProfileData())
 });
 
 Header.propTypes = {
-  searchProducts: PropTypes.func
+  profileData: PropTypes.object,
+  isFetching: PropTypes.bool,
+  signOut: PropTypes.func,
+  searchProducts: PropTypes.func,
+  fetchProfileData: PropTypes.func
 };
 
 export default connect(
