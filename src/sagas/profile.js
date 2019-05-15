@@ -1,18 +1,24 @@
-import { fetchProfileDataActions } from '../actions/profile';
+import {
+  fetchProfileDataActions,
+  fetchOwnProductsActions
+} from '../actions/profile';
 
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { getProfileData } from '../api-client/profile';
+import {
+  getFetchProfileData,
+  getFetchOwnProducts
+} from '../api-client/profile';
 
-export function* watchFetchProfileData() {
+function* watchFetchProfileData() {
   yield takeEvery(fetchProfileDataActions.request, fetchProfileData);
 }
 
-export function* fetchProfileData() {
+function* fetchProfileData() {
   try {
     const token = yield localStorage.getItem('token');
     const headers = { Authorization: `JWT ${token}` };
 
-    const result = yield call(getProfileData, headers);
+    const result = yield call(getFetchProfileData, headers);
     yield put({
       type: fetchProfileDataActions.success,
       payload: result.data
@@ -27,3 +33,30 @@ export function* fetchProfileData() {
     });
   }
 }
+
+function* watchFetchOwnProducts() {
+  yield takeEvery(fetchOwnProductsActions.request, fetchOwnProducts);
+}
+
+function* fetchOwnProducts() {
+  try {
+    const token = yield localStorage.getItem('token');
+    const headers = { Authorization: `JWT ${token}` };
+
+    const result = yield call(getFetchOwnProducts, headers);
+    yield put({
+      type: fetchOwnProductsActions.success,
+      payload: result.data.data
+    });
+  } catch (error) {
+    yield put({
+      type: fetchOwnProductsActions.failure,
+      payload: error,
+      meta: {
+        printLog: true
+      }
+    });
+  }
+}
+
+export const profileSagas = [watchFetchProfileData(), watchFetchOwnProducts()];

@@ -1,8 +1,12 @@
-import { fetchProfileDataActions } from '../actions/profile';
+import {
+  fetchProfileDataActions,
+  fetchOwnProductsActions
+} from '../actions/profile';
 
 const initialState = {
   isFetching: false,
   profileData: null,
+  ownProducts: null,
   error: null
 };
 
@@ -20,6 +24,15 @@ export default function(state = initialState, action) {
 
     case fetchProfileDataActions.failure:
       return { ...state, error: action.payload };
+
+    case fetchOwnProductsActions.request:
+      return { ...state, isFetching: true };
+
+    case fetchOwnProductsActions.success:
+      return { ...state, isFetching: false, ownProducts: action.payload };
+
+    case fetchOwnProductsActions.failure:
+      return { ...state, isFetching: false, error: action.payload };
 
     default:
       return state;

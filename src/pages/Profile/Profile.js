@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { fetchProfileData } from 'actions/profile';
+import { fetchProfileData, fetchOwnProducts } from 'actions/profile';
 
 import CSSModules from 'react-css-modules';
 import styles from './Profile.module.scss';
@@ -15,10 +15,13 @@ import Loading from 'components/Loading/Loading';
 class Profile extends Component {
   componentDidMount() {
     this.props.fetchProfileData();
+    this.props.fetchOwnProducts();
   }
 
   renderProfileData = () => {
-    const { isFetching, profileData } = this.props;
+    const { isFetching, profileData, ownProducts } = this.props;
+
+    console.log(ownProducts);
 
     if (!isFetching && profileData) {
       const {
@@ -49,6 +52,15 @@ class Profile extends Component {
               {location ? <li>Location: {location}</li> : null}
             </ul>
           </div>
+          <div>
+            <ul>
+              <li>
+                <div>{ownProducts[0].theme}</div>
+              </li>
+              <li />
+              <li />
+            </ul>
+          </div>
         </div>
       );
     } else {
@@ -68,12 +80,13 @@ class Profile extends Component {
 }
 
 const mapStateToProps = state => {
-  const { profileData, isFetching } = state.profile;
-  return { isFetching, profileData };
+  const { profileData, ownProducts, isFetching } = state.profile;
+  return { isFetching, profileData, ownProducts };
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchProfileData: () => dispatch(fetchProfileData())
+  fetchProfileData: () => dispatch(fetchProfileData()),
+  fetchOwnProducts: () => dispatch(fetchOwnProducts())
 });
 
 Profile.propTypes = {

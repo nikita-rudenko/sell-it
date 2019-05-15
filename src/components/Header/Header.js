@@ -24,8 +24,6 @@ class Header extends Component {
   };
 
   handleSignOut = () => {
-    console.log(this.props.signOut);
-
     this.props.signOut();
   };
 
