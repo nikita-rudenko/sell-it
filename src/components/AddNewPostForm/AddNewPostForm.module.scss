@@ -1,16 +1,15 @@
 .body {
-  width: 40rem;
+  width: 50rem;
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: 37.5em) {
+    width: 90%;
+  }
 }
 
 .label {
   width: 100%;
-}
-
-.checkbox {
-  display: block;
-  margin-bottom: 1rem;
 }
 
 .input {
@@ -31,9 +30,10 @@
   }
 }
 
-.select {
+.select,
+.checkbox {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .submit {
@@ -72,4 +72,9 @@
   position: absolute;
   margin-top: 1rem;
   margin-left: 1rem;
+}
+
+.required {
+  font-weight: bold;
+  color: var(--color-warning);
 }

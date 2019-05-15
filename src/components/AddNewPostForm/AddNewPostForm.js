@@ -1,7 +1,12 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import { Field } from 'redux-form';
-import { FormField, checkBoxField, selectField } from './FormField';
+import {
+  FormField,
+  RequiredFormField,
+  checkBoxField,
+  selectField
+} from './FormField';
 
 import styles from './AddNewPostForm.module.scss';
 
@@ -9,15 +14,14 @@ let AddNewItemForm = ({ handleSubmit, submitting }) => (
   <form className={styles.body} onSubmit={handleSubmit}>
     <div>
       <label className={styles.label} htmlFor='theme'>
-        Theme
+        Theme <span className={styles.required}>*</span>
       </label>
       <Field
         className={styles.input}
-        component={FormField}
+        component={RequiredFormField}
         name='theme'
         id='theme'
         type='text'
-        required
       />
       <label className={styles.label} htmlFor='theme'>
         Text
@@ -73,10 +77,10 @@ let AddNewItemForm = ({ handleSubmit, submitting }) => (
         component={FormField}
         name='location'
         id='location'
-        type='text'
+        type='number'
       />
 
-      <label htmlFor='location'>is active</label>
+      <label htmlFor='isActive'>is active</label>
       <Field
         component={checkBoxField}
         name='isActive'

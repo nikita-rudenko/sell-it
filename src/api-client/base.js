@@ -3,6 +3,7 @@ import axios from 'axios';
 const API_URL = 'http://light-it-04.tk/api/';
 
 function request({ method, url, data, headers }) {
+  console.log(method, url, data, headers);
   return axios({
     method,
     url: `${API_URL}${url}`,
@@ -19,11 +20,12 @@ export const get = (path, headers) => {
   });
 };
 
-export const post = (path, data) => {
+export const post = (path, data, headers) => {
   return request({
     method: 'POST',
     url: path,
     data,
-    token: data
+    token: data,
+    headers
   });
 };

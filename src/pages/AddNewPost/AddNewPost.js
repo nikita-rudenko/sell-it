@@ -19,7 +19,6 @@ class AddNewPost extends Component {
       <>
         <Header />
         <div styleName='form-wrapper'>
-          <h1 styleName='heading-text'>Add New Post</h1>
           <AddNewPostForm onSubmit={this.submit} styleName='form' />
         </div>
         <Footer />

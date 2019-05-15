@@ -8,7 +8,8 @@ import {
 import {
   getFetchProducts,
   getFetchDetails,
-  getSearchProducts
+  getSearchProducts,
+  postAddNewProduct
 } from 'api-client/products';
 
 import { put, takeEvery, call } from 'redux-saga/effects';
@@ -81,7 +82,20 @@ export function* watchAddNewProduct() {
 }
 
 export function* addNewProduct(action) {
-  yield console.log(action);
+  try {
+    const { payload: data } = action;
+    const token = yield localStorage.getItem('token');
+    const headers = { Authorization: `JWT ${token}` };
+
+    yield call(postAddNewProduct, data, headers);
+    yield put({
+      type: addNewProductActions.success
+    });
+  } catch (error) {
+    yield put({
+      type: addNewProductActions.failure
+    });
+  }
 }
 
 export const productSagas = [
