@@ -23,7 +23,7 @@ export default function(state = initialState, action) {
       };
 
     case fetchProfileDataActions.failure:
-      return { ...state, error: action.payload };
+      return { ...state, isFetching: false, error: action.payload };
 
     case fetchOwnProductsActions.request:
       return { ...state, isFetching: true };

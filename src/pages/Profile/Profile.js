@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { fetchProfileData, fetchOwnProducts } from 'actions/profile';
+import { fetchProfileData } from 'actions/profile';
 
 import CSSModules from 'react-css-modules';
 import styles from './Profile.module.scss';
@@ -11,17 +11,16 @@ import defAvatar from 'assets/img/avatar-default.png';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import Loading from 'components/Loading/Loading';
+import UserProducts from 'components/UserProducts/UserProducts';
+// import ProductItem from '../../components/UserProducts/ProductItem';
 
 class Profile extends Component {
   componentDidMount() {
     this.props.fetchProfileData();
-    this.props.fetchOwnProducts();
   }
 
   renderProfileData = () => {
-    const { isFetching, profileData, ownProducts } = this.props;
-
-    console.log(ownProducts);
+    const { isFetching, profileData } = this.props;
 
     if (!isFetching && profileData) {
       const {
@@ -34,33 +33,23 @@ class Profile extends Component {
       } = profileData;
 
       return (
-        <div styleName='container'>
-          <div styleName='user'>
-            <img
-              styleName='avatar'
-              src={avatar ? avatar : defAvatar}
-              alt='Avatar.'
-            />
-            <h1>{username ? username : 'Your username'}</h1>
-            <ul styleName='info-list'>
-              {first_name && last_name ? (
-                <li>
-                  Full name: `${last_name} ${last_name}`
-                </li>
-              ) : null}
-              {email ? <li>Email: {email}</li> : null}
-              {location ? <li>Location: {location}</li> : null}
-            </ul>
-          </div>
-          <div>
-            <ul>
+        <div styleName='user'>
+          <h2>Profile</h2>
+          <img
+            styleName='avatar'
+            src={avatar ? avatar : defAvatar}
+            alt='Avatar.'
+          />
+          <h1>{username ? username : 'Your username'}</h1>
+          <ul styleName='info-list'>
+            {first_name && last_name ? (
               <li>
-                <div>{ownProducts[0].theme}</div>
+                Full name: `${last_name} ${last_name}`
               </li>
-              <li />
-              <li />
-            </ul>
-          </div>
+            ) : null}
+            {email ? <li>Email: {email}</li> : null}
+            {location ? <li>Location: {location}</li> : null}
+          </ul>
         </div>
       );
     } else {
@@ -72,7 +61,10 @@ class Profile extends Component {
     return (
       <>
         <Header />
-        {this.renderProfileData()}
+        <div styleName='container'>
+          {this.renderProfileData()}
+          <UserProducts />
+        </div>
         <Footer />
       </>
     );
@@ -80,13 +72,13 @@ class Profile extends Component {
 }
 
 const mapStateToProps = state => {
-  const { profileData, ownProducts, isFetching } = state.profile;
-  return { isFetching, profileData, ownProducts };
+  const { profileData, isFetching } = state.profile;
+  return { isFetching, profileData };
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchProfileData: () => dispatch(fetchProfileData()),
-  fetchOwnProducts: () => dispatch(fetchOwnProducts())
+  fetchProfileData: () => dispatch(fetchProfileData())
+  // fetchOwnProducts: () => dispatch(fetchOwnProducts())
 });
 
 Profile.propTypes = {
