@@ -1,6 +1,7 @@
 import {
   fetchProfileDataActions,
-  fetchOwnProductsActions
+  fetchOwnProductsActions,
+  deleteOwnProductActions
 } from '../actions/profile';
 
 const initialState = {
@@ -32,6 +33,15 @@ export default function(state = initialState, action) {
       return { ...state, isFetching: false, ownProducts: action.payload };
 
     case fetchOwnProductsActions.failure:
+      return { ...state, isFetching: false, error: action.payload };
+
+    case deleteOwnProductActions.request:
+      return { ...state, isFetching: true };
+
+    case deleteOwnProductActions.success:
+      return { ...state, isFetching: false };
+
+    case deleteOwnProductActions.failure:
       return { ...state, isFetching: false, error: action.payload };
 
     default:

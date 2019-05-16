@@ -4,8 +4,8 @@ import { Field } from 'redux-form';
 import {
   FormField,
   RequiredFormField,
-  checkBoxField,
-  selectField
+  checkBoxField
+  // selectField
 } from './FormField';
 
 import styles from './AddNewPostForm.module.scss';
@@ -45,7 +45,7 @@ let AddNewItemForm = ({ handleSubmit, submitting }) => (
         min='0'
       />
 
-      <label className={styles.label} htmlFor='currency'>
+      {/* <label className={styles.label} htmlFor='currency'>
         Currency
       </label>
       <Field
@@ -57,7 +57,7 @@ let AddNewItemForm = ({ handleSubmit, submitting }) => (
         <option>- select -</option>
         <option name='dollar'>Dollar</option>
         <option name='euro'>Euro</option>
-      </Field>
+      </Field> */}
 
       <label className={styles.label} htmlFor='contractPrice'>
         Contract Price

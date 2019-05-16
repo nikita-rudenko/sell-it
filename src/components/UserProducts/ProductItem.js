@@ -6,6 +6,7 @@ import styles from './UserProducts.module.scss';
 
 function ProductItem(props) {
   const { item } = props;
+  const { pk } = item;
   return (
     <li styleName='product'>
       <div>
@@ -22,7 +23,12 @@ function ProductItem(props) {
           <li />
         </ul>
       </div>
-      <button styleName='product-delete'>Delete</button>
+      <button
+        onClick={() => props.deleteProduct(pk)}
+        styleName='product-delete'
+      >
+        Delete
+      </button>
     </li>
   );
 }

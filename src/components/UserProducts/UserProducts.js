@@ -2,31 +2,42 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-
-import { fetchOwnProducts } from 'actions/profile';
+import { fetchOwnProducts, deleteOwnProduct } from 'actions/profile';
 
 import CSSModules from 'react-css-modules';
 import styles from './UserProducts.module.scss';
 
 import ProductItem from './ProductItem';
+import Loading from 'components/Loading/Loading';
 
 class UserProducts extends Component {
   componentDidMount() {
     this.props.fetchOwnProducts();
   }
 
+  deleteProduct = id => {
+    this.props.deleteOwnProduct(id);
+    this.props.fetchOwnProducts();
+  };
+
   mapProducts = () => {
     const { ownProducts: data, isFetching } = this.props;
 
-    return data !== null && !isFetching && data.length > 0 ? (
-      data.map(item => {
-        return <ProductItem key={item.pk} item={item} />;
-      })
-    ) : (
-      <div>
-        <h1>No results</h1>
-      </div>
-    );
+    if (data !== null && !isFetching && data.length) {
+      return data.map(item => {
+        return (
+          <ProductItem
+            key={item.pk}
+            item={item}
+            deleteProduct={this.deleteProduct}
+          />
+        );
+      });
+    } else if (isFetching) {
+      return <Loading />;
+    } else if (!isFetching) {
+      return <h3>No data.</h3>;
+    }
   };
 
   render() {
@@ -45,7 +56,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchOwnProducts: () => dispatch(fetchOwnProducts())
+  fetchOwnProducts: () => dispatch(fetchOwnProducts()),
+  deleteOwnProduct: id => dispatch(deleteOwnProduct(id))
 });
 
 UserProducts.propTypes = {

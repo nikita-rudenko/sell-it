@@ -29,3 +29,11 @@ export const post = (path, data, headers) => {
     headers
   });
 };
+
+export const deleteM = (path, headers) => {
+  return request({
+    method: 'DELETE',
+    url: path,
+    headers
+  });
+};

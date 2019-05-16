@@ -13,6 +13,11 @@ export const fetchOwnProductsActions = createAsyncActions(
   'FETCH_OWN_PRODUCTS'
 );
 
+export const deleteOwnProductActions = createAsyncActions(
+  identifier,
+  'DELETE_OWN_PRODUCT'
+);
+
 // ACTION CREATORS
 export const fetchProfileData = () => ({
   type: fetchProfileDataActions.request
@@ -20,4 +25,9 @@ export const fetchProfileData = () => ({
 
 export const fetchOwnProducts = () => ({
   type: fetchOwnProductsActions.request
+});
+
+export const deleteOwnProduct = id => ({
+  type: deleteOwnProductActions.request,
+  payload: id
 });
