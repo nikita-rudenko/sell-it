@@ -17,7 +17,6 @@ class UserProducts extends Component {
 
   deleteProduct = id => {
     this.props.deleteOwnProduct(id);
-    this.props.fetchOwnProducts();
   };
 
   mapProducts = () => {

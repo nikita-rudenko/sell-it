@@ -76,6 +76,7 @@ function* deleteOwnProduct(action) {
     yield put({
       type: deleteOwnProductActions.success
     });
+    yield call(fetchOwnProducts);
   } catch (error) {
     yield put({
       type: deleteOwnProductActions.failure,
