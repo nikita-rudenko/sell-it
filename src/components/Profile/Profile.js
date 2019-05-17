@@ -8,11 +8,7 @@ import CSSModules from 'react-css-modules';
 import styles from './Profile.module.scss';
 import defAvatar from 'assets/img/avatar-default.png';
 
-import Header from 'components/Header/Header';
-import Footer from 'components/Footer/Footer';
 import Loading from 'components/Loading/Loading';
-import UserProducts from 'components/UserProducts/UserProducts';
-// import ProductItem from '../../components/UserProducts/ProductItem';
 
 class Profile extends Component {
   componentDidMount() {
@@ -31,7 +27,6 @@ class Profile extends Component {
         location,
         username
       } = profileData;
-
       return (
         <div styleName='user'>
           <h2>Profile</h2>
@@ -58,27 +53,17 @@ class Profile extends Component {
   };
 
   render() {
-    return (
-      <>
-        <Header />
-        <div styleName='container'>
-          {this.renderProfileData()}
-          <UserProducts />
-        </div>
-        <Footer />
-      </>
-    );
+    return <>{this.renderProfileData()}</>;
   }
 }
 
-const mapStateToProps = state => {
-  const { profileData, isFetching } = state.profile;
-  return { isFetching, profileData };
-};
+const mapStateToProps = state => ({
+  profileData: state.profile.profileData,
+  isFetching: state.profile.isFetching
+});
 
 const mapDispatchToProps = dispatch => ({
   fetchProfileData: () => dispatch(fetchProfileData())
-  // fetchOwnProducts: () => dispatch(fetchOwnProducts())
 });
 
 Profile.propTypes = {

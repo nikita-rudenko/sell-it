@@ -49,10 +49,10 @@ class UserProducts extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { ownProducts, isFetching } = state.profile;
-  return { ownProducts, isFetching };
-};
+const mapStateToProps = state => ({
+  ownProducts: state.profile.ownProducts,
+  isFetching: state.profile.isFetching
+});
 
 const mapDispatchToProps = dispatch => ({
   fetchOwnProducts: () => dispatch(fetchOwnProducts()),
@@ -60,7 +60,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 UserProducts.propTypes = {
-  isFetching: PropTypes.bool
+  isFetching: PropTypes.bool,
+  ownProducts: PropTypes.array,
+  fetchOwnProducts: PropTypes.func,
+  deleteOwnProduct: PropTypes.func
 };
 
 export default connect(

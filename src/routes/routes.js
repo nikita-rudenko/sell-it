@@ -6,7 +6,7 @@ import NoAuthRequired from 'hoc/NoAuthRequired';
 import ProductList from 'pages/ProductList/ProductList';
 import ProductDetails from 'pages/ProductDetails/ProductDetails';
 import AuthPage from 'pages/AuthPage/AuthPage';
-import Profile from 'pages/Profile/Profile';
+import ProfilePage from 'pages/ProfilePage/ProfilePage';
 import Default from 'pages/Default/Default';
 import AddNewPost from 'pages/AddNewPost/AddNewPost';
 
@@ -20,7 +20,7 @@ const Routes = () => (
       component={AuthRequired(ProductDetails)}
     />
     <Route exact path='/add' component={AuthRequired(AddNewPost)} />
-    <Route exact path='/profile' component={AuthRequired(Profile)} />
+    <Route exact path='/profile' component={AuthRequired(ProfilePage)} />
     <Route component={Default} />
   </Switch>
 );
