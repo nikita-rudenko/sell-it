@@ -2,12 +2,12 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 import { Field } from 'redux-form';
 import { validate } from 'utils/validate';
-import FormField from './FormField';
+import FormField from './ReduxForm';
 
 import styles from './SignIn.module.scss';
 
 let SignIn = ({ handleSubmit, submitting, errorMessage, children }) => (
-  <form className={styles.body} onSubmit={handleSubmit}>
+  <form onSubmit={handleSubmit}>
     {children}
     <div>
       <Field

@@ -7,8 +7,7 @@ import { fetchOwnProducts, deleteOwnProduct } from 'actions/profile';
 import CSSModules from 'react-css-modules';
 import styles from './UserProducts.module.scss';
 
-import ProductItem from './ProductItem';
-import Loading from 'components/Loading/Loading';
+import UserProductItem from './UserProductItem';
 
 class UserProducts extends Component {
   componentDidMount() {
@@ -24,25 +23,23 @@ class UserProducts extends Component {
 
     if (data !== null && !isFetching && data.length) {
       return (
-        <>
-          <h1>User Products</h1>
+        <ul>
           {data.map(item => {
             return (
-              <ProductItem
+              <UserProductItem
                 key={item.pk}
                 item={item}
                 deleteProduct={this.deleteProduct}
               />
             );
           })}
-        </>
+        </ul>
       );
     } else if (!isFetching) {
       return (
-        <>
-          <h1>User Products</h1>
+        <div styleName='no-data'>
           <h3>No data.</h3>
-        </>
+        </div>
       );
     }
   };
@@ -50,7 +47,10 @@ class UserProducts extends Component {
   render() {
     return (
       <div styleName='product-list'>
-        <ul>{this.mapProducts()}</ul>
+        <div styleName='heading'>
+          <h2>User Products</h2>
+        </div>
+        {this.mapProducts()}
       </div>
     );
   }

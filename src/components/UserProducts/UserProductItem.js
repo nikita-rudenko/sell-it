@@ -4,7 +4,7 @@ import CSSModules from 'react-css-modules';
 import styles from './UserProducts.module.scss';
 import defProduct from 'assets/img/default.jpg';
 
-function ProductItem(props) {
+function UserProductItem(props) {
   const { item } = props;
   const { pk, theme } = item;
   const image = item.images.length ? item.images[0] : defProduct;
@@ -31,4 +31,4 @@ function ProductItem(props) {
   );
 }
 
-export default CSSModules(ProductItem, styles);
+export default CSSModules(UserProductItem, styles);

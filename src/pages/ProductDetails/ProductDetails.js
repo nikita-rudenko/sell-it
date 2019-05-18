@@ -9,7 +9,7 @@ import CSSModules from 'react-css-modules';
 import defaultImg from 'assets/img/default.jpg';
 
 import Loading from 'components/Loading/Loading';
-import MainLayout from '../../layouts/MainLayout';
+import MainLayout from 'layouts/MainLayout';
 
 class ProductDetails extends Component {
   componentDidMount() {

@@ -26,8 +26,10 @@ class Profile extends Component {
         username
       } = profileData;
       return (
-        <div styleName='user'>
-          <h1>Profile</h1>
+        <>
+          <div styleName='heading'>
+            <h1>Profile</h1>
+          </div>
           <img
             styleName='avatar'
             src={avatar ? avatar : defAvatar}
@@ -43,7 +45,7 @@ class Profile extends Component {
             {email ? <li>Email: {email}</li> : null}
             {location ? <li>Location: {location}</li> : null}
           </ul>
-        </div>
+        </>
       );
     } else {
       return null;
@@ -51,7 +53,7 @@ class Profile extends Component {
   };
 
   render() {
-    return <>{this.renderProfileData()}</>;
+    return <div styleName='user'>{this.renderProfileData()}</div>;
   }
 }
 
