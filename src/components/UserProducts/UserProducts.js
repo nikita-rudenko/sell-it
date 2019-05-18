@@ -23,26 +23,33 @@ class UserProducts extends Component {
     const { ownProducts: data, isFetching } = this.props;
 
     if (data !== null && !isFetching && data.length) {
-      return data.map(item => {
-        return (
-          <ProductItem
-            key={item.pk}
-            item={item}
-            deleteProduct={this.deleteProduct}
-          />
-        );
-      });
-    } else if (isFetching) {
-      return <Loading />;
+      return (
+        <>
+          <h1>User Products</h1>
+          {data.map(item => {
+            return (
+              <ProductItem
+                key={item.pk}
+                item={item}
+                deleteProduct={this.deleteProduct}
+              />
+            );
+          })}
+        </>
+      );
     } else if (!isFetching) {
-      return <h3>No data.</h3>;
+      return (
+        <>
+          <h1>User Products</h1>
+          <h3>No data.</h3>
+        </>
+      );
     }
   };
 
   render() {
     return (
       <div styleName='product-list'>
-        <h2>User Products</h2>
         <ul>{this.mapProducts()}</ul>
       </div>
     );

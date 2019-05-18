@@ -6,7 +6,7 @@ import {
   RequiredFormField,
   checkBoxField
   // selectField
-} from './FormField';
+} from './ReduxForm';
 
 import styles from './AddNewPostForm.module.scss';
 

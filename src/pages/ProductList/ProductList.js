@@ -6,10 +6,9 @@ import { fetchProducts } from 'actions/products';
 import styles from './ProductList.module.scss';
 import CSSModules from 'react-css-modules';
 
-import Header from 'components/Header/Header';
 import ProductItem from 'components/ProductItem/ProductItem';
-import Footer from 'components/Footer/Footer';
 import Loading from 'components/Loading/Loading';
+import MainLayout from '../../layouts/MainLayout';
 
 class ProductList extends Component {
   componentDidMount() {
@@ -33,19 +32,15 @@ class ProductList extends Component {
     const data = productList;
 
     return (
-      <>
-        <Header />
-        <main>
-          {!isFetching ? (
-            <section styleName='product-list'>
-              {this.mapProducts(data, isFetching)}
-            </section>
-          ) : (
-            <Loading />
-          )}
-        </main>
-        <Footer />
-      </>
+      <MainLayout>
+        {!isFetching ? (
+          <section styleName='product-list'>
+            {this.mapProducts(data, isFetching)}
+          </section>
+        ) : (
+          <Loading />
+        )}
+      </MainLayout>
     );
   }
 }

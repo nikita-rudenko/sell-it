@@ -8,8 +8,6 @@ import CSSModules from 'react-css-modules';
 import styles from './Profile.module.scss';
 import defAvatar from 'assets/img/avatar-default.png';
 
-import Loading from 'components/Loading/Loading';
-
 class Profile extends Component {
   componentDidMount() {
     this.props.fetchProfileData();
@@ -29,7 +27,7 @@ class Profile extends Component {
       } = profileData;
       return (
         <div styleName='user'>
-          <h2>Profile</h2>
+          <h1>Profile</h1>
           <img
             styleName='avatar'
             src={avatar ? avatar : defAvatar}
@@ -48,7 +46,7 @@ class Profile extends Component {
         </div>
       );
     } else {
-      return <Loading />;
+      return null;
     }
   };
 

@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addNewProduct } from 'actions/products';
 
-import Header from 'components/Header/Header';
-import Footer from 'components/Footer/Footer';
+import MainLayout from '../../layouts/MainLayout';
 import AddNewPostForm from 'components/AddNewPostForm/AddNewPostForm';
 
 import CSSModules from 'react-css-modules';
@@ -16,13 +15,11 @@ class AddNewPost extends Component {
   };
   render() {
     return (
-      <>
-        <Header />
+      <MainLayout>
         <div styleName='form-wrapper'>
           <AddNewPostForm onSubmit={this.submit} styleName='form' />
         </div>
-        <Footer />
-      </>
+      </MainLayout>
     );
   }
 }

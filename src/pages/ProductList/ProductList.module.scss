@@ -1,12 +1,12 @@
 .product-list {
   max-width: 1200px;
-  margin: 10rem auto 6rem auto;
+  margin: 0 auto 0 auto;
   padding: 0 4.5rem;
   display: flex;
   flex-flow: row wrap;
 
   @media only screen and (max-width: 56.25em) {
-    padding: 0 5rem 0 5rem;
+    padding: 0 3rem;
   }
 
   @media only screen and (max-width: 37.5em) {
