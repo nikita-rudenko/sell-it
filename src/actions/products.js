@@ -17,6 +17,11 @@ export const addNewProductActions = createAsyncActions(
   'ADD_NEW_PRODUCT'
 );
 
+export const resetSuccessActions = createAsyncActions(
+  identifier,
+  'RESET_SUCCESS'
+);
+
 // ACTION CREATORS
 export const fetchProducts = () => ({ type: fetchProductsActions.request });
 
@@ -34,3 +39,5 @@ export const addNewProduct = data => ({
   type: addNewProductActions.request,
   payload: data
 });
+
+export const resetSuccess = () => ({ type: resetSuccessActions.request });

@@ -8,7 +8,7 @@ import ProductDetails from 'pages/ProductDetails/ProductDetails';
 import AuthPage from 'pages/AuthPage/AuthPage';
 import ProfilePage from 'pages/ProfilePage/ProfilePage';
 import Default from 'pages/Default/Default';
-import AddNewPost from 'pages/AddNewPost/AddNewPost';
+import AddNewProduct from 'pages/AddNewProduct/AddNewProduct';
 
 const Routes = () => (
   <Switch>
@@ -19,7 +19,7 @@ const Routes = () => (
       path='/details/:productId'
       component={AuthRequired(ProductDetails)}
     />
-    <Route exact path='/add' component={AuthRequired(AddNewPost)} />
+    <Route exact path='/add' component={AuthRequired(AddNewProduct)} />
     <Route exact path='/profile' component={AuthRequired(ProfilePage)} />
     <Route component={Default} />
   </Switch>

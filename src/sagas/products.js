@@ -84,6 +84,8 @@ export function* watchAddNewProduct() {
 export function* addNewProduct(action) {
   try {
     const { payload: data } = action;
+    console.log(data);
+
     const token = yield localStorage.getItem('token');
     const headers = { Authorization: `JWT ${token}` };
 

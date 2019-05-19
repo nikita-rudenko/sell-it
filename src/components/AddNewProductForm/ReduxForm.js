@@ -1,8 +1,8 @@
 import React from 'react';
 
-import styles from './AddNewPostForm.module.scss';
+import styles from './AddNewProductForm.module.scss';
 
-export const FormField = ({
+export const FormInput = ({
   input,
   type,
   placeholder,
@@ -16,7 +16,7 @@ export const FormField = ({
         {...input}
         placeholder={placeholder}
         type={type}
-        min={type === 'number' ? 0 : null}
+        min={type === 'number' ? 1 : null}
         id={id}
       />
       {touched && error && <p className={styles.hint}>{error}</p>}
@@ -24,7 +24,7 @@ export const FormField = ({
   );
 };
 
-export const RequiredFormField = ({
+export const FormRequiredInput = ({
   input,
   type,
   placeholder,
@@ -46,11 +46,11 @@ export const RequiredFormField = ({
   );
 };
 
-export const checkBoxField = ({ input, type, id }) => {
+export const FormCheckbox = ({ input, type, id }) => {
   return <input className={styles.checkbox} {...input} type={type} id={id} />;
 };
 
-export const selectField = ({ input, children }) => (
+export const FormSelect = ({ input, children }) => (
   <select className={styles.select} {...input}>
     {children}
   </select>

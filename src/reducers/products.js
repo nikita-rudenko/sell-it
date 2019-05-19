@@ -2,14 +2,16 @@ import {
   fetchProductsActions,
   getDetailsActions,
   searchProductsActions,
-  addNewProductActions
+  addNewProductActions,
+  resetSuccessActions
 } from '../actions/products';
 
 const initialState = {
   isFetching: false,
   productList: null,
   details: null,
-  error: null
+  error: null,
+  addNewSuccess: false
 };
 
 export default function(state = initialState, action) {
@@ -45,10 +47,13 @@ export default function(state = initialState, action) {
       return { ...state, isFetching: true };
 
     case addNewProductActions.success:
-      return { ...state, isFetching: false };
+      return { ...state, isFetching: false, addNewSuccess: true };
 
     case addNewProductActions.failure:
       return { ...state, isFetching: false, error: action.payload };
+
+    case resetSuccessActions.request:
+      return { ...state, addNewSuccess: false };
 
     default:
       return state;
