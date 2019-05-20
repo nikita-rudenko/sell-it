@@ -1,110 +1,20 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { searchProducts } from 'actions/products';
-import { signOut } from 'actions/auth';
-import { fetchProfileData } from 'actions/profile';
+import React from 'react';
 
 import CSSModules from 'react-css-modules';
 import styles from './Header.module.scss';
-import logo from 'assets/img/logo-small.png';
-import searchIcon from 'assets/img/icons/fa-search.png';
-import defAvatar from 'assets/img/avatar-default.png';
-import iconSignOut from 'assets/img/icons/fa-sign-out.png';
 
-class Header extends Component {
-  componentDidMount() {
-    this.props.fetchProfileData();
-  }
+import Search from './Search';
+import Logo from './Logo';
+import UserBlock from './UserBlock';
 
-  handleSearch = e => {
-    this.props.searchProducts(e.target.value);
-  };
-
-  handleSignOut = () => {
-    this.props.signOut();
-  };
-
-  renderUserBlock = () => {
-    const { profileData, isFetching } = this.props;
-
-    if (profileData !== null && !isFetching) {
-      const { avatar, username } = profileData;
-      return (
-        <>
-          <div styleName='profile'>
-            <img
-              styleName='avatar'
-              src={avatar ? avatar : defAvatar}
-              alt='User avatar'
-            />
-            <div styleName='name'>
-              {username ? profileData.username : 'Username'}
-            </div>
-          </div>
-          <button onClick={this.handleSignOut} styleName='sign-out'>
-            <img src={iconSignOut} title='Sign Out' alt='Sign Out.' />
-          </button>
-          <div styleName='sub-menu'>
-            <Link styleName='sub-action' to='/add'>
-              <span>Add new post</span>
-            </Link>
-            <Link styleName='sub-action' to='/profile'>
-              <span>Profile</span>
-            </Link>
-          </div>
-        </>
-      );
-    } else {
-      return null;
-    }
-  };
-
-  render() {
-    return (
-      <header styleName='header'>
-        <Link to='/'>
-          <img styleName='logo' src={logo} alt='Small logo.' />
-        </Link>
-
-        <div styleName='search'>
-          <img styleName='icon' src={searchIcon} alt='Search icon' />
-          <input
-            styleName='input'
-            type='text'
-            placeholder='Try to find something'
-            onChange={this.handleSearch}
-          />
-        </div>
-
-        <div styleName='userblock'>{this.renderUserBlock()}</div>
-      </header>
-    );
-  }
+function Header() {
+  return (
+    <header styleName='header'>
+      <Logo />
+      <Search />
+      <UserBlock />
+    </header>
+  );
 }
 
-const mapStateToProps = state => ({
-  profileData: state.profile.profileData,
-  isFetching: state.profile.isFetching
-});
-
-const mapDispatchToProps = dispatch => ({
-  signOut: () => dispatch(signOut()),
-  searchProducts: query => dispatch(searchProducts(query)),
-  fetchProfileData: () => dispatch(fetchProfileData())
-});
-
-Header.propTypes = {
-  profileData: PropTypes.object,
-  isFetching: PropTypes.bool,
-  signOut: PropTypes.func,
-  searchProducts: PropTypes.func,
-  fetchProfileData: PropTypes.func
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CSSModules(Header, styles));
+export default CSSModules(Header, styles);

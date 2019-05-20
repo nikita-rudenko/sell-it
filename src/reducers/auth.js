@@ -87,6 +87,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
+        userData: action.payload,
         isAuthenticated: true
       };
 

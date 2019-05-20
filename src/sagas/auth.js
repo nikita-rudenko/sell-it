@@ -11,6 +11,7 @@ import {
   getSignOut,
   postAuthUser
 } from 'api-client/auth';
+import { getFetchProfileData } from '../api-client/profile';
 
 export function* watchSignIn() {
   yield takeEvery(signInActions.request, signIn);
@@ -65,7 +66,10 @@ export function* authUser() {
 
     yield call(postAuthUser, data);
 
-    yield put({ type: authUserActions.success });
+    const headers = { Authorization: `JWT ${token}` };
+    const res = yield call(getFetchProfileData, headers);
+
+    yield put({ type: authUserActions.success, payload: res.data });
   } catch (error) {
     yield put({ type: authUserActions.failure });
   }
