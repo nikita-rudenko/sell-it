@@ -8,14 +8,16 @@ import CSSModules from 'react-css-modules';
 
 import ProductItem from 'components/ProductItem/ProductItem';
 import Loading from 'components/Loading/Loading';
-import MainLayout from '../../layouts/MainLayout';
+import MainLayout from 'layouts/MainLayout';
 
-class ProductList extends Component {
+export class ProductList extends Component {
   componentDidMount() {
     this.props.fetchProducts();
   }
 
-  mapProducts = (data, isFetching) => {
+  mapProducts = () => {
+    const { productList: data, isFetching } = this.props;
+
     return data !== null && !isFetching && data.length > 0 ? (
       data.map(item => {
         return <ProductItem key={item.pk} item={item} />;
@@ -27,21 +29,24 @@ class ProductList extends Component {
     );
   };
 
-  render() {
-    const { productList, isFetching } = this.props;
-    const data = productList;
+  renderProducts = () => {
+    const { productList: data, isFetching } = this.props;
 
-    return (
-      <MainLayout>
-        {!isFetching ? (
-          <section styleName='product-list'>
-            {this.mapProducts(data, isFetching)}
-          </section>
-        ) : (
-          <Loading />
-        )}
-      </MainLayout>
-    );
+    if (!isFetching && data) {
+      return (
+        <section styleName='product-list'>
+          {this.mapProducts(data, isFetching)}
+        </section>
+      );
+    } else if (!isFetching) {
+      return <p>No data...</p>;
+    } else if (isFetching) {
+      return <Loading />;
+    }
+  };
+
+  render() {
+    return <MainLayout>{this.renderProducts()}</MainLayout>;
   }
 }
 

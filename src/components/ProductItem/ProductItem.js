@@ -11,8 +11,9 @@ import eye from 'assets/img/icons/fa-eye.png';
 const ProductItem = props => {
   const { theme, images, pk } = props.item;
 
-  const image = images.length ? images[0].file : defaultImg;
-  const title = theme ? theme : 'Product Title';
+  const image =
+    images.length && images !== undefined ? images[0].file : defaultImg;
+  const title = theme && theme !== undefined ? theme : 'Product Title';
 
   return (
     <Link styleName='product' to={`/details/${pk}`}>
