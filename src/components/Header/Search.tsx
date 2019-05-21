@@ -1,15 +1,19 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
 import { connect } from 'react-redux';
+// @ts-ignore
 import { searchProducts } from 'actions/products';
 
 import CSSModules from 'react-css-modules';
 import styles from './Header.module.scss';
 import searchIcon from 'assets/img/icons/fa-search.png';
 
-class Search extends Component {
-  handleSearch = e => {
+interface Actions {
+  searchProducts: (query: string) => void;
+}
+
+class Search extends React.Component<Actions> {
+  handleSearch = (e: React.ChangeEvent<any>) => {
     this.props.searchProducts(e.target.value);
   };
 
@@ -28,13 +32,14 @@ class Search extends Component {
   }
 }
 
+// @ts-ignore
 const mapDispatchToProps = dispatch => ({
-  searchProducts: query => dispatch(searchProducts(query))
+  searchProducts: (query: string) => dispatch(searchProducts(query))
 });
 
-Search.propTypes = {
-  searchProducts: PropTypes.func
-};
+// Search.propTypes = {
+//   searchProducts: PropTypes.func
+// };
 
 export default connect(
   null,

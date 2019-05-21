@@ -16,6 +16,8 @@ export const store = createStore(
   composeWithDevTools(applyMiddleware(sagaMiddleware, logger))
 );
 
+// export type StoreState = typeof store;
+
 export const history = createBrowserHistory();
 httpService.setupInterceptors(store, history);
 

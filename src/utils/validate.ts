@@ -1,5 +1,13 @@
-export const validate = values => {
-  const errors = {};
+interface Errors {
+  username?: string;
+  email?: string;
+  password?: string;
+  password1?: string;
+  password2?: string;
+}
+
+export const validate = (values: Errors) => {
+  const errors: Errors = {};
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   const emailRegex = /(.+)@(.+){2,}\.(.+){2,}/i;
 

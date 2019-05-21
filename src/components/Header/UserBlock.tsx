@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+// import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+// @ts-ignore
 import { signOut } from 'actions/auth';
 
 import CSSModules from 'react-css-modules';
@@ -10,7 +11,21 @@ import styles from './Header.module.scss';
 import defAvatar from 'assets/img/avatar-default.png';
 import iconSignOut from 'assets/img/icons/fa-sign-out.png';
 
-class UserBlock extends Component {
+interface UserBlock {
+  userData: UserData;
+  isFetching: boolean;
+}
+
+interface UserBlockDispatch {
+  signOut: () => void;
+}
+
+interface UserData {
+  avatar: string;
+  username: string;
+}
+
+class UserBlock extends React.Component<UserBlock & UserBlockDispatch> {
   handleSignOut = () => {
     this.props.signOut();
   };
@@ -53,22 +68,22 @@ class UserBlock extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: any): any => ({
   userData: state.auth.userData,
   isFetching: state.auth.isFetching
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: any) => ({
   signOut: () => dispatch(signOut())
 });
 
-UserBlock.propTypes = {
-  userData: PropTypes.object,
-  isFetching: PropTypes.bool,
-  signOut: PropTypes.func
-};
+// UserBlock.propTypes = {
+//   userData: PropTypes.object,
+//   isFetching: PropTypes.bool,
+//   signOut: PropTypes.func
+// };
 
-export default connect(
+export default connect<UserBlock, UserBlockDispatch, {}, any>(
   mapStateToProps,
   mapDispatchToProps
 )(CSSModules(UserBlock, styles));
