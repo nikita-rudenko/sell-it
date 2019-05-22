@@ -7,6 +7,8 @@ import Routes from 'routes/routes';
 
 import { authUser } from './actions/auth';
 
+import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary';
+
 import 'sass/main.scss';
 
 const token = localStorage.getItem('token');
@@ -19,7 +21,9 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router history={history}>
-          <Routes />
+          <ErrorBoundary>
+            <Routes />
+          </ErrorBoundary>
         </Router>
       </Provider>
     );
