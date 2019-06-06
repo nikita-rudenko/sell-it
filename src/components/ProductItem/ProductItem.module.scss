@@ -1,17 +1,18 @@
 .product {
   height: 25rem;
-  flex: 0 30%;
-  margin: 1rem;
+  flex: 0 48%;
+  margin: 1%;
   box-shadow: var(--shadow-dark);
   font-family: 'Arial-BoldMT';
   text-decoration: none;
   transition: all 0.2s;
 
   @media only screen and (max-width: 56.25em) {
-    flex: 0 45.5%;
+    flex: 0 48%;
   }
 
   @media only screen and (max-width: 37.5em) {
+    margin: 2% 1%;
     flex: 0 100%;
   }
 }
