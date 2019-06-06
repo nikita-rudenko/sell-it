@@ -65,7 +65,7 @@ const mapDispatchToProps = dispatch => ({
 UserBlock.propTypes = {
   userData: PropTypes.object,
   isFetching: PropTypes.bool,
-  signOut: PropTypes.func
+  signOut: PropTypes.func.isRequired
 };
 
 export default connect(

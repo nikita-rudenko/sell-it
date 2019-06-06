@@ -77,8 +77,9 @@ const mapDispatchToProps = dispatch => ({
 
 ProductList.propTypes = {
   productList: PropTypes.array,
+  metaData: PropTypes.object,
   isFetching: PropTypes.bool,
-  fetchProducts: PropTypes.func
+  fetchProducts: PropTypes.func.isRequired
 };
 
 export default connect(

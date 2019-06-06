@@ -69,7 +69,7 @@ const mapDispatchToProps = dispatch => ({
 Profile.propTypes = {
   profileData: PropTypes.object,
   isFetching: PropTypes.bool,
-  fetchProfileData: PropTypes.func
+  fetchProfileData: PropTypes.func.isRequired
 };
 
 export default connect(
