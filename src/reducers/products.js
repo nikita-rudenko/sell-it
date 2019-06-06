@@ -9,6 +9,7 @@ import {
 const initialState = {
   isFetching: false,
   productList: null,
+  metaData: null,
   details: null,
   error: null,
   addNewSuccess: false
@@ -20,7 +21,12 @@ export default function(state = initialState, action) {
       return { ...state, isFetching: true };
 
     case fetchProductsActions.success:
-      return { ...state, productList: action.payload, isFetching: false };
+      return {
+        ...state,
+        productList: action.payload.data,
+        metaData: action.payload.meta,
+        isFetching: false
+      };
 
     case fetchProductsActions.failure:
       return { ...state, isFetching: false, error: action.payload };

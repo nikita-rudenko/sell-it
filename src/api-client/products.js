@@ -1,7 +1,7 @@
 import { get, post } from './base';
 
-export const getFetchProducts = () => {
-  return get('/posters');
+export const getFetchProducts = (page = 1) => {
+  return get('/posters/?page=' + page);
 };
 
 export const getFetchDetails = id => {
