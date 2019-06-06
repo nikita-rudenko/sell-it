@@ -6,12 +6,7 @@ import { addNewProduct, resetSuccess } from 'actions/products';
 
 import { reset, reduxForm } from 'redux-form';
 import { Field } from 'redux-form';
-import {
-  FormInput,
-  FormRequiredInput,
-  FormCheckbox
-  // FormSelect
-} from './ReduxForm';
+import { FormInput, FormRequiredInput, FormCheckbox } from './ReduxForm';
 
 import styles from './AddNewProductForm.module.scss';
 
@@ -80,20 +75,6 @@ class AddNewProductForm extends React.Component {
               min='0'
             />
 
-            {/* <label className={styles.label} htmlFor='currency'>
-        Currency
-        </label>
-        <Field
-        component={selectField}
-        name='currency'
-        id='currency'
-        type='dropdown'
-        >
-        <option>- select -</option>
-        <option name='dollar'>Dollar</option>
-        <option name='euro'>Euro</option>
-      </Field> */}
-
             <label className={styles.label} htmlFor='contractPrice'>
               Contract Price
             </label>
@@ -103,14 +84,6 @@ class AddNewProductForm extends React.Component {
               id='contractPrice'
               type='checkbox'
             />
-
-            {/* <label htmlFor='isActive'>is active</label>
-      <Field
-      component={checkBoxField}
-      name='isActive'
-      id='isActive'
-      type='checkbox'
-    /> */}
           </div>
           <button className={styles.submit} type='submit' disabled={submitting}>
             Publish
@@ -135,8 +108,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 AddNewProductForm.propTypes = {
-  addNewProduct: PropTypes.func,
-  resetSuccess: PropTypes.func,
+  addNewProduct: PropTypes.func.isRequired,
+  resetSuccess: PropTypes.func.isRequired,
   addNewSuccess: PropTypes.bool
 };
 

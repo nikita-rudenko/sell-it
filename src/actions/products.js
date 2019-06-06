@@ -23,7 +23,10 @@ export const resetSuccessActions = createAsyncActions(
 );
 
 // ACTION CREATORS
-export const fetchProducts = () => ({ type: fetchProductsActions.request });
+export const fetchProducts = page => ({
+  type: fetchProductsActions.request,
+  payload: page
+});
 
 export const getDetails = id => ({
   type: getDetailsActions.request,

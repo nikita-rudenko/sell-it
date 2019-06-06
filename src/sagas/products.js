@@ -18,12 +18,13 @@ export function* watchFetchProducts() {
   yield takeEvery(fetchProductsActions.request, fetchProducts);
 }
 
-export function* fetchProducts() {
+export function* fetchProducts(action) {
   try {
-    const result = yield call(getFetchProducts);
+    const { payload } = action;
+    const result = yield call(getFetchProducts, payload);
     yield put({
       type: fetchProductsActions.success,
-      payload: result.data.data
+      payload: result.data
     });
   } catch (error) {
     yield put({

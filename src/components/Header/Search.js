@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 Search.propTypes = {
-  searchProducts: PropTypes.func
+  searchProducts: PropTypes.func.isRequired
 };
 
 export default connect(

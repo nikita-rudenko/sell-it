@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Pagination from 'rc-pagination';
 import { connect } from 'react-redux';
 import { fetchProducts } from 'actions/products';
 
 import styles from './ProductList.module.scss';
 import CSSModules from 'react-css-modules';
+import 'rc-pagination/assets/index.css';
 
 import ProductItem from 'components/ProductItem/ProductItem';
 import Loading from 'components/Loading/Loading';
@@ -14,6 +16,10 @@ export class ProductList extends Component {
   componentDidMount() {
     this.props.fetchProducts();
   }
+
+  onChange = page => {
+    this.props.fetchProducts(page);
+  };
 
   mapProducts = () => {
     const { productList: data, isFetching } = this.props;
@@ -30,12 +36,21 @@ export class ProductList extends Component {
   };
 
   renderProducts = () => {
-    const { productList: data, isFetching } = this.props;
+    const { productList: data, metaData, isFetching } = this.props;
 
     if (!isFetching && data) {
+      const { page, total, per_page } = metaData;
+      const total_products = total * per_page;
+
       return (
         <section styleName='product-list'>
           {this.mapProducts(data, isFetching)}
+          <Pagination
+            styleName='pagination'
+            onChange={this.onChange}
+            current={page}
+            total={total_products}
+          />
         </section>
       );
     } else if (!isFetching) {
@@ -52,17 +67,19 @@ export class ProductList extends Component {
 
 const mapStateToProps = state => ({
   productList: state.product.productList,
+  metaData: state.product.metaData,
   isFetching: state.product.isFetching
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchProducts: () => dispatch(fetchProducts())
+  fetchProducts: page => dispatch(fetchProducts(page))
 });
 
 ProductList.propTypes = {
   productList: PropTypes.array,
+  metaData: PropTypes.object,
   isFetching: PropTypes.bool,
-  fetchProducts: PropTypes.func
+  fetchProducts: PropTypes.func.isRequired
 };
 
 export default connect(
