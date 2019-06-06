@@ -2,6 +2,10 @@
   width: 50rem;
   display: flex;
   flex-direction: column;
+  padding: 4rem 2rem;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: var(--shadow-dark);
 
   @media only screen and (max-width: 37.5em) {
     width: 90%;
@@ -19,7 +23,6 @@
   margin: 0;
   background: transparent;
   border: none;
-  outline: 0;
   color: var(--color-dark);
   border-bottom: 2px solid var(--color-primary);
   margin-bottom: 3rem;
@@ -40,7 +43,6 @@
   background: var(--color-white);
   padding: 0;
   border: none;
-  outline: 0;
   color: inherit;
   height: 4rem;
   cursor: pointer;
