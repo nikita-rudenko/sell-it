@@ -41,7 +41,7 @@ class ProductDetails extends Component {
                 <p styleName='from'>
                   from <span styleName='author'>{details.owner.username}</span>
                 </p>
-                <h2 styleName='price'>{details.price} $</h2>
+                <p styleName='price'>{details.price} $</p>
               </div>
               <p styleName='description'>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam

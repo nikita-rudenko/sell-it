@@ -12,9 +12,11 @@
   max-height: 30rem;
 
   @media only screen and (max-width: 37.5em) {
+    text-align: center;
     flex-direction: column;
     max-height: 100%;
     align-items: center;
+    margin-bottom: 3rem;
   }
 }
 
@@ -32,7 +34,7 @@
 
 .info-wrapper {
   color: var(--color-dark);
-  width: 28rem;
+  width: 32rem;
   height: 28rem;
   margin: 1rem;
   display: flex;
@@ -63,7 +65,7 @@
 .price {
   color: var(--color-success);
   font-family: 'Arial-BoldMT';
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 400;
 }
 
@@ -71,6 +73,9 @@
   font-size: 1.2rem;
   color: var(--color-dark);
   margin-bottom: 1rem;
+  @media only screen and (max-width: 37.5em) {
+    text-align: left;
+  }
 }
 
 .link {
